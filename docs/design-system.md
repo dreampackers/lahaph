@@ -1,11 +1,12 @@
 # Design System
 
-## Brand Personality
+## Brand Keywords
 - Warm
-- Artistic
+- Hopeful
 - Trustworthy
-- Clear
+- Artistic
 - Human-centered
+- Readable
 
 ## Color Palette
 - Primary Green: #46C449
@@ -19,22 +20,28 @@
 - Black: #222222
 - White: #FFFFFF
 
-## Usage
-- Primary CTA: Primary Green
-- Headings: Deep Navy
-- Body text: #222222
-- Section backgrounds: White or very light tinted neutral
-- Use accent colors sparingly
+## Usage Principles
+- Primary CTA uses Primary Green
+- Titles and strong information use Deep Navy
+- Body text uses Black
+- Background should mostly stay White or very light neutral
+- Accent colors should be used carefully, not all at once
 
 ## Typography
-- Prioritize readability
-- Clear heading hierarchy
-- Avoid narrow line-length issues
-- Mobile-first spacing
+- Readable and calm
+- Strong heading hierarchy
+- Comfortable line spacing
+- Mobile-first readability
 
-## UI Style
+## Component Style
 - Rounded cards
-- Clear section spacing
-- Large CTA blocks
-- Modular grid layout
-- Avoid clutter
+- Soft spacing
+- Strong section separation
+- Image-led but text-readable
+- Clear CTA areas
+
+## Avoid
+- overly decorative effects
+- cluttered home page
+- low contrast combinations
+- overly dark UI
