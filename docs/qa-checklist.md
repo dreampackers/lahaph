@@ -1,23 +1,37 @@
 # QA Checklist
 
 ## Structure
-- All top-level navigation matches sitemap
-- All pages have hero, content sections, and CTA
-- Footer info is complete
+- navigation matches sitemap
+- all major pages exist
+- footer includes contact details
+- templates map properly to content types
 
 ## Content
-- No fabricated facts
-- Long text reformatted for readability
-- Missing content marked as TODO
+- no fabricated facts
+- long text is reformatted for web readability
+- missing sections are marked TODO
+- CTA is present where needed
 
-## UI
-- Mobile responsive
-- Consistent spacing
-- Clear CTA placement
-- Color usage consistent with design system
+## Theme
+- colors match design system
+- typography is readable
+- spacing is consistent
+- mobile layout is stable
 
-## Technical
-- No TypeScript errors
-- No broken links
-- Images optimized
-- Metadata set
+## Plugin / CMS
+- CPT labels are clear
+- custom fields are usable
+- admin UI is understandable
+- content editing flow is simple
+
+## Frontend
+- links work
+- archive pages sort correctly
+- poster and profile images display correctly
+- inquiry form works
+
+## Launch Readiness
+- contact information correct
+- copyright/footer correct
+- search basic behavior works
+- privacy page present
