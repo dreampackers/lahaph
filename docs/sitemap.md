@@ -1,5 +1,5 @@
 # Sitemap
- 
+
 ## Home
 
 ## Lahaph
@@ -41,7 +41,7 @@
 - 공연 알림
 - 법인 재정관련 공시 서류
 
-## Utility
-- 검색
+## Utility Pages
 - 문의하기
+- 검색
 - 개인정보처리방침
