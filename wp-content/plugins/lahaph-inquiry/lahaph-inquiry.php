@@ -21,15 +21,11 @@ define( 'LAHAPH_INQUIRY_VERSION', '1.0.0' );
 define( 'LAHAPH_INQUIRY_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LAHAPH_INQUIRY_URL', plugin_dir_url( __FILE__ ) );
 
+require_once LAHAPH_INQUIRY_DIR . 'includes/db-setup.php';
+require_once LAHAPH_INQUIRY_DIR . 'includes/form-handler.php';
+require_once LAHAPH_INQUIRY_DIR . 'includes/admin-list.php';
+
 /**
- * 플러그인 초기화
- * Phase 6에서 문의 처리 로직이 추가됩니다.
+ * 플러그인 활성화 시 DB 테이블 생성
  */
-function lahaph_inquiry_init(): void {
-	// TODO: Phase 6 — 문의 폼 shortcode 또는 블록 등록
-	// TODO: Phase 6 — 폼 제출 처리 (nonce 검증, 입력값 sanitize)
-	// TODO: Phase 6 — 이메일 발송 (wp_mail)
-	// TODO: Phase 6 — DB 저장 (선택적)
-	// TODO: Phase 6 — 관리자 문의 목록 뷰
-}
-add_action( 'init', 'lahaph_inquiry_init' );
+register_activation_hook( __FILE__, 'lahaph_inquiry_create_table' );
