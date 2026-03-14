@@ -1,0 +1,34 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:template-part {"slug":"page-hero","tagName":"div"} /-->
+
+<!-- wp:group {"tagName":"main","layout":{"type":"constrained"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|70"}}}} -->
+<main class="wp-block-group">
+
+	<!-- 카테고리 표시 -->
+	<!-- wp:group {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|30"}}},"layout":{"type":"flex","alignItems":"center"}} -->
+	<div class="wp-block-group" style="margin-bottom:var(--wp--preset--spacing--30)">
+		<!-- wp:post-terms {"term":"content_category","style":{"color":{"text":"var:preset|color|primary-green"},"typography":{"fontWeight":"600","fontSize":"var:preset|font-size|small"}}} /-->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- 유튜브 임베드 영역 (본문에 삽입) -->
+	<!-- wp:post-content {"layout":{"type":"constrained"}} /-->
+
+	<!-- wp:spacer {"height":"var:preset|spacing|50"} -->
+	<div style="height:var(--wp--preset--spacing--50)" aria-hidden="true" class="wp-block-spacer"></div>
+	<!-- /wp:spacer -->
+
+	<!-- 목록 복귀 버튼 -->
+	<!-- wp:buttons -->
+	<div class="wp-block-buttons">
+		<!-- wp:button {"className":"is-style-outline","style":{"border":{"radius":"6px","color":"var:preset|color|deep-navy","width":"1px"},"color":{"text":"var:preset|color|deep-navy"}}} -->
+		<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="/contents" style="border-radius:6px;border-color:var(--wp--preset--color--deep-navy);color:var(--wp--preset--color--deep-navy)">← 콘텐츠 목록</a></div>
+		<!-- /wp:button -->
+	</div>
+	<!-- /wp:buttons -->
+
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
