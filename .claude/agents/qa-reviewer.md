@@ -9,6 +9,5 @@ Check:
 - Broken links
 - Inconsistent components
 - Missing CTA sections
-- TypeScript issues
 - Responsive layout issues
 - Deviations from sitemap and docs
