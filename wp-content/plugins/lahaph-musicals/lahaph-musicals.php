@@ -21,16 +21,7 @@ define( 'LAHAPH_MUSICALS_VERSION', '1.0.0' );
 define( 'LAHAPH_MUSICALS_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LAHAPH_MUSICALS_URL', plugin_dir_url( __FILE__ ) );
 
-/**
- * 플러그인 초기화
- * Phase 2에서 뮤지컬 관련 필드 및 관리자 UI가 추가됩니다.
- */
-function lahaph_musicals_init(): void {
-	// TODO: Phase 2 — musical CPT 커스텀 필드 등록
-	//   (year, subtitle, intro, story_content, purpose, staff, cast,
-	//    inquiry_phone, poster_image, gallery_images, display_order)
-	// TODO: Phase 2 — musical_year 택소노미 등록
-	// TODO: Phase 2 — 관리자 컬럼 (연도, 제목, 포스터 등)
-	// TODO: Phase 2 — 아카이브 정렬 (연도 기준 내림차순)
-}
-add_action( 'init', 'lahaph_musicals_init' );
+require_once LAHAPH_MUSICALS_DIR . 'includes/post-types.php';
+require_once LAHAPH_MUSICALS_DIR . 'includes/taxonomies.php';
+require_once LAHAPH_MUSICALS_DIR . 'includes/meta-fields.php';
+require_once LAHAPH_MUSICALS_DIR . 'includes/admin-columns.php';

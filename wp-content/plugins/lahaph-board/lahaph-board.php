@@ -21,16 +21,5 @@ define( 'LAHAPH_BOARD_VERSION', '1.0.0' );
 define( 'LAHAPH_BOARD_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LAHAPH_BOARD_URL', plugin_dir_url( __FILE__ ) );
 
-/**
- * 플러그인 초기화
- * Phase 2에서 CPT 및 커스텀 필드가 추가됩니다.
- */
-function lahaph_board_init(): void {
-	// TODO: Phase 2 — notice CPT 등록 (공연 알림)
-	//   필드: title, summary, content, notice_status, related_program,
-	//          attached_file, event_date, display_order
-	// TODO: Phase 2 — disclosure CPT 등록 (법인 재정관련 공시 서류)
-	//   필드: title, summary, disclosure_year, attached_file, display_order
-	// TODO: Phase 2 — 관리자 컬럼 및 파일 첨부 UI
-}
-add_action( 'init', 'lahaph_board_init' );
+require_once LAHAPH_BOARD_DIR . 'includes/post-types.php';
+require_once LAHAPH_BOARD_DIR . 'includes/meta-fields.php';

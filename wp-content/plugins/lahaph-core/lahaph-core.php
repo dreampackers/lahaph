@@ -21,13 +21,6 @@ define( 'LAHAPH_CORE_VERSION', '1.0.0' );
 define( 'LAHAPH_CORE_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LAHAPH_CORE_URL', plugin_dir_url( __FILE__ ) );
 
-/**
- * 플러그인 초기화
- * Phase 2에서 CPT, 택소노미, 메타 필드 등록이 추가됩니다.
- */
-function lahaph_core_init(): void {
-	// TODO: Phase 2 — CPT 등록 (musical, member, artist, academy_course, video_content)
-	// TODO: Phase 2 — 택소노미 등록 (musical_year, member_group, academy_category, content_category)
-	// TODO: Phase 2 — 공유 메타 필드 등록
-}
-add_action( 'init', 'lahaph_core_init' );
+require_once LAHAPH_CORE_DIR . 'includes/post-types.php';
+require_once LAHAPH_CORE_DIR . 'includes/taxonomies.php';
+require_once LAHAPH_CORE_DIR . 'includes/meta-fields.php';
