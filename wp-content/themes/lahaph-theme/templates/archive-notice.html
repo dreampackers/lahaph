@@ -1,0 +1,56 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"div","className":"archive-hero","style":{"color":{"background":"#1E2F6F"},"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group archive-hero" style="background-color:#1E2F6F;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
+	<!-- wp:heading {"level":1,"style":{"color":{"text":"#FFFFFF"},"typography":{"fontSize":"var:preset|font-size|hero"}}} -->
+	<h1 class="wp-block-heading" style="color:#FFFFFF;font-size:var(--wp--preset--font-size--hero)">공연 알림</h1>
+	<!-- /wp:heading -->
+	<!-- wp:paragraph {"style":{"color":{"text":"rgba(255,255,255,0.8)"},"typography":{"fontSize":"var:preset|font-size|large"}}} -->
+	<p style="color:rgba(255,255,255,0.8);font-size:var(--wp--preset--font-size--large)">라하프의 공연 및 모집 안내를 확인하세요.</p>
+	<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"tagName":"main","layout":{"type":"constrained"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|70"}}}} -->
+<main class="wp-block-group">
+
+	<!-- wp:query {"queryId":0,"query":{"perPage":15,"pages":0,"offset":0,"postType":"notice","order":"desc","orderBy":"date"},"layout":{"type":"default"}} -->
+	<div class="wp-block-query">
+
+		<!-- wp:post-template -->
+			<!-- wp:group {"className":"notice-list-item","style":{"border":{"bottom":{"width":"1px","color":"#E8E8E8"}},"spacing":{"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30"}}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","alignItems":"flex-start"}} -->
+			<div class="wp-block-group notice-list-item">
+				<!-- wp:group {"layout":{"type":"default"}} -->
+				<div class="wp-block-group">
+					<!-- wp:post-title {"isLink":true,"style":{"color":{"text":"var:preset|color|deep-navy"},"typography":{"fontWeight":"600"}}} /-->
+					<!-- wp:post-excerpt {"moreText":"","excerptLength":15,"style":{"color":{"text":"var:preset|color|soft-gray"},"typography":{"fontSize":"var:preset|font-size|small"}}} /-->
+				</div>
+				<!-- /wp:group -->
+				<!-- wp:post-date {"style":{"color":{"text":"var:preset|color|soft-gray"},"typography":{"fontSize":"var:preset|font-size|small"}}} /-->
+			</div>
+			<!-- /wp:group -->
+		<!-- /wp:post-template -->
+
+		<!-- wp:query-no-results -->
+			<!-- wp:paragraph {"style":{"color":{"text":"var:preset|color|soft-gray"}}} -->
+			<p style="color:var(--wp--preset--color--soft-gray)">등록된 공연 알림이 없습니다.</p>
+			<!-- /wp:paragraph -->
+		<!-- /wp:query-no-results -->
+
+		<!-- wp:spacer {"height":"var:preset|spacing|40"} -->
+		<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer"></div>
+		<!-- /wp:spacer -->
+
+		<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"}} -->
+			<!-- wp:query-pagination-previous /-->
+			<!-- wp:query-pagination-numbers /-->
+			<!-- wp:query-pagination-next /-->
+		<!-- /wp:query-pagination -->
+
+	</div>
+	<!-- /wp:query -->
+
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

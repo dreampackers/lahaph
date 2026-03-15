@@ -1,1 +1,140 @@
+/*
+Theme Name: Lahaph Theme
+Theme URI: https://lahaph.org
+Description: 라하프 공식 웹사이트를 위한 커스텀 블록 테마. 발달장애 예술 공동체 라하프의 따뜻하고 신뢰감 있는 브랜드 정체성을 반영합니다.
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 6.7
+Requires PHP: 8.0
+Author: Lahaph
+Author URI: https://lahaph.org
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: lahaph-theme
+Tags: block-theme, custom-colors, custom-typography, nonprofit, korean
+*/
 
+/* =============================================================
+   라하프 테마 글로벌 스타일
+   ============================================================= */
+
+/* ── 기본 ──────────────────────────────────────────────────── */
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* ── 링크 ──────────────────────────────────────────────────── */
+a {
+	text-underline-offset: 3px;
+}
+
+/* ── 네비게이션 모바일 ─────────────────────────────────────── */
+.wp-block-navigation__responsive-container.is-menu-open {
+	padding: 24px 20px;
+}
+
+/* ── 문의 폼 ────────────────────────────────────────────────── */
+.lahaph-inquiry-form label {
+	font-weight: 600;
+	color: #333333;
+	display: block;
+	margin-bottom: 4px;
+}
+
+.lahaph-inquiry-form input,
+.lahaph-inquiry-form select,
+.lahaph-inquiry-form textarea {
+	width: 100%;
+}
+
+.lahaph-inquiry-form input:focus,
+.lahaph-inquiry-form select:focus,
+.lahaph-inquiry-form textarea:focus {
+	outline: 2px solid #46C449;
+	outline-offset: 1px;
+	border-color: #46C449;
+}
+
+/* ── 과정 카드 ──────────────────────────────────────────────── */
+.course-card {
+	transition: box-shadow 0.15s ease;
+}
+
+.course-card:hover {
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* ── CTA 블록 ───────────────────────────────────────────────── */
+.lahaph-cta {
+	text-align: center;
+}
+
+/* =============================================================
+   반응형 — 태블릿 이하 (≤ 781px)
+   ============================================================= */
+@media (max-width: 781px) {
+
+	/* 히어로 섹션 폰트 축소 */
+	.wp-block-group .wp-block-post-title,
+	h1.wp-block-post-title {
+		font-size: clamp(1.8rem, 5vw, 2.8rem) !important;
+	}
+
+	/* 홈 히어로 큰 제목 */
+	h1.hero-heading,
+	.hero-heading {
+		font-size: clamp(2rem, 7vw, 3.5rem) !important;
+		line-height: 1.25 !important;
+	}
+
+	/* 컬럼 레이아웃 — 단일 열로 전환 */
+	.wp-block-columns.is-not-stacked-on-mobile {
+		flex-wrap: wrap;
+	}
+
+	/* 뮤지컬 아카이브 그리드 2→1열 */
+	.wp-block-post-template.is-flex-container {
+		grid-template-columns: 1fr !important;
+	}
+
+	/* 문의 폼 래퍼 */
+	.lahaph-inquiry-wrap {
+		max-width: 100%;
+	}
+}
+
+/* =============================================================
+   반응형 — 모바일 (≤ 480px)
+   ============================================================= */
+@media (max-width: 480px) {
+
+	/* 버튼 여백 축소 */
+	.wp-block-button .wp-block-button__link {
+		padding: 12px 20px !important;
+		font-size: 0.95rem !important;
+	}
+
+	/* 스탯/숫자 강조 축소 */
+	h3.wp-block-heading[style*="3.5rem"] {
+		font-size: 2.5rem !important;
+	}
+
+	/* 철학 카드 번호 */
+	p[style*="3rem"] {
+		font-size: 2.2rem !important;
+	}
+
+	/* 과정 카드 그리드 — 1열 */
+	.wp-block-post-template[style*="grid"] {
+		grid-template-columns: 1fr !important;
+	}
+}
