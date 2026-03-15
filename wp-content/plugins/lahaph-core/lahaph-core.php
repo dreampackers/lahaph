@@ -24,3 +24,4 @@ define( 'LAHAPH_CORE_URL', plugin_dir_url( __FILE__ ) );
 require_once LAHAPH_CORE_DIR . 'includes/post-types.php';
 require_once LAHAPH_CORE_DIR . 'includes/taxonomies.php';
 require_once LAHAPH_CORE_DIR . 'includes/meta-fields.php';
+require_once LAHAPH_CORE_DIR . 'includes/admin-usability.php';
