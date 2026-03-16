@@ -21,6 +21,15 @@
 	<p class="has-text-align-center" style="color:rgba(255,255,255,0.85);font-size:var(--wp--preset--font-size--x-large)">극단 라하프 설립</p>
 	<!-- /wp:paragraph -->
 
+	<!-- wp:spacer {"height":"var:preset|spacing|20"} -->
+	<div style="height:var(--wp--preset--spacing--20)" aria-hidden="true" class="wp-block-spacer"></div>
+	<!-- /wp:spacer -->
+
+	<!-- Since 2016 표시 -->
+	<!-- wp:paragraph {"textAlign":"center","style":{"color":{"text":"rgba(255,255,255,0.30)"},"typography":{"fontSize":"5rem","fontWeight":"900","lineHeight":"1","letterSpacing":"-0.02em"}}} -->
+	<p class="has-text-align-center" style="color:rgba(255,255,255,0.30);font-size:5rem;font-weight:900;line-height:1;letter-spacing:-0.02em">Since 2016</p>
+	<!-- /wp:paragraph -->
+
 </div>
 <!-- /wp:group -->
 
@@ -37,8 +46,8 @@
 	<!-- wp:group {"className":"timeline-year","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} -->
 	<div class="wp-block-group timeline-year" style="margin-bottom:var(--wp--preset--spacing--40)">
 
-		<!-- wp:heading {"level":3,"style":{"color":{"text":"var:preset|color|primary-green"},"typography":{"fontSize":"var:preset|font-size|x-large","fontWeight":"700"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
-		<h3 class="wp-block-heading" style="color:var(--wp--preset--color--primary-green);font-size:var(--wp--preset--font-size--x-large);font-weight:700;margin-bottom:var(--wp--preset--spacing--20)">2016</h3>
+		<!-- wp:heading {"level":3,"style":{"color":{"text":"var:preset|color|primary-green"},"typography":{"fontSize":"3rem","fontWeight":"900","lineHeight":"1"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
+		<h3 class="wp-block-heading" style="color:var(--wp--preset--color--primary-green);font-size:3rem;font-weight:900;line-height:1;margin-bottom:var(--wp--preset--spacing--20)">2016</h3>
 		<!-- /wp:heading -->
 
 		<!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"var:preset|spacing|30"}}}} -->
@@ -86,8 +95,8 @@
 	<!-- wp:group {"className":"timeline-year","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} -->
 	<div class="wp-block-group timeline-year" style="margin-bottom:var(--wp--preset--spacing--40)">
 
-		<!-- wp:heading {"level":3,"style":{"color":{"text":"var:preset|color|primary-green"},"typography":{"fontSize":"var:preset|font-size|x-large","fontWeight":"700"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
-		<h3 class="wp-block-heading" style="color:var(--wp--preset--color--primary-green);font-size:var(--wp--preset--font-size--x-large);font-weight:700;margin-bottom:var(--wp--preset--spacing--20)">2017</h3>
+		<!-- wp:heading {"level":3,"style":{"color":{"text":"var:preset|color|primary-green"},"typography":{"fontSize":"3rem","fontWeight":"900","lineHeight":"1"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
+		<h3 class="wp-block-heading" style="color:var(--wp--preset--color--primary-green);font-size:3rem;font-weight:900;line-height:1;margin-bottom:var(--wp--preset--spacing--20)">2017</h3>
 		<!-- /wp:heading -->
 
 		<!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"var:preset|spacing|30"}}}} -->
@@ -172,8 +181,8 @@
 	<!-- wp:group {"className":"timeline-year","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} -->
 	<div class="wp-block-group timeline-year" style="margin-bottom:var(--wp--preset--spacing--40)">
 
-		<!-- wp:heading {"level":3,"style":{"color":{"text":"var:preset|color|primary-green"},"typography":{"fontSize":"var:preset|font-size|x-large","fontWeight":"700"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
-		<h3 class="wp-block-heading" style="color:var(--wp--preset--color--primary-green);font-size:var(--wp--preset--font-size--x-large);font-weight:700;margin-bottom:var(--wp--preset--spacing--20)">2018</h3>
+		<!-- wp:heading {"level":3,"style":{"color":{"text":"var:preset|color|primary-green"},"typography":{"fontSize":"3rem","fontWeight":"900","lineHeight":"1"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
+		<h3 class="wp-block-heading" style="color:var(--wp--preset--color--primary-green);font-size:3rem;font-weight:900;line-height:1;margin-bottom:var(--wp--preset--spacing--20)">2018</h3>
 		<!-- /wp:heading -->
 
 		<!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"var:preset|spacing|30"}}}} -->
@@ -257,7 +266,7 @@
 		<p class="award-date" style="color:var(--wp--preset--color--warm-yellow);font-weight:700;font-size:var(--wp--preset--font-size--small);min-width:120px">2017.02.10</p>
 		<!-- /wp:paragraph -->
 		<!-- wp:paragraph {"style":{"color":{"text":"#333333"},"typography":{"fontSize":"var:preset|font-size|large"}}} -->
-		<p style="color:#333333;font-size:var(--wp--preset--font-size--large)">대한민국 국회대상 (뮤지컬 부문) 수상</p>
+		<p style="color:#333333;font-size:var(--wp--preset--font-size--large)">&#9733; 대한민국 국회대상 (뮤지컬 부문) 수상</p>
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->
@@ -268,7 +277,7 @@
 		<p class="award-date" style="color:var(--wp--preset--color--warm-yellow);font-weight:700;font-size:var(--wp--preset--font-size--small);min-width:120px">2017.08.19</p>
 		<!-- /wp:paragraph -->
 		<!-- wp:paragraph {"style":{"color":{"text":"#333333"},"typography":{"fontSize":"var:preset|font-size|large"}}} -->
-		<p style="color:#333333;font-size:var(--wp--preset--font-size--large)">제5회 대한민국 장애인 예술 경연 대회 스페셜 K 연극뮤지컬 장려상 수상</p>
+		<p style="color:#333333;font-size:var(--wp--preset--font-size--large)">&#9733; 제5회 대한민국 장애인 예술 경연 대회 스페셜 K 연극뮤지컬 장려상 수상</p>
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->
