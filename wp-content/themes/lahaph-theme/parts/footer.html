@@ -1,5 +1,17 @@
-<!-- wp:group {"tagName":"footer","className":"site-footer","style":{"color":{"background":"#1E2F6F"},"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|40"}}},"layout":{"type":"constrained"}} -->
-<footer class="wp-block-group site-footer" style="background-color:#1E2F6F;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--40)">
+<!-- wp:group {"tagName":"footer","className":"site-footer","style":{"color":{"background":"#1E2F6F"},"spacing":{"padding":{"top":"0","bottom":"var:preset|spacing|40"}}},"layout":{"type":"constrained"}} -->
+<footer class="wp-block-group site-footer" style="background-color:#1E2F6F;padding-top:0;padding-bottom:var(--wp--preset--spacing--40)">
+
+	<!-- wp:group {"className":"site-footer-top-bar-wrap","style":{"spacing":{"padding":{"top":"0","bottom":"0"},"margin":{"bottom":"0"}}},"layout":{"type":"default"}} -->
+	<div class="wp-block-group site-footer-top-bar-wrap">
+		<!-- wp:separator {"className":"site-footer-top-bar","style":{"color":{"background":"#46C449"},"spacing":{"margin":{"top":"0","bottom":"0"}}}} -->
+		<hr class="wp-block-separator site-footer-top-bar has-text-color has-background has-alpha-channel-opacity" style="background-color:#46C449;color:#46C449;margin-top:0;margin-bottom:0"/>
+		<!-- /wp:separator -->
+	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:spacer {"height":"var:preset|spacing|60"} -->
+	<div style="height:var(--wp--preset--spacing--60)" aria-hidden="true" class="wp-block-spacer"></div>
+	<!-- /wp:spacer -->
 
 	<!-- wp:columns {"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|40","left":"var:preset|spacing|50"}}}} -->
 	<div class="wp-block-columns">
@@ -13,8 +25,8 @@
 			<div style="height:var(--wp--preset--spacing--20)" aria-hidden="true" class="wp-block-spacer"></div>
 			<!-- /wp:spacer -->
 
-			<!-- wp:paragraph {"style":{"color":{"text":"#FFFFFF"},"typography":{"fontSize":"0.875rem","lineHeight":"1.8"}}} -->
-			<p style="color:#FFFFFF;font-size:0.875rem;line-height:1.8">
+			<!-- wp:paragraph {"style":{"color":{"text":"rgba(255,255,255,0.85)"},"typography":{"fontSize":"0.875rem","lineHeight":"1.8"}}} -->
+			<p style="color:rgba(255,255,255,0.85);font-size:0.875rem;line-height:1.8">
 				라하프는 발달장애인과 비장애 예술가가 함께 성장하는<br>문화예술 공동체입니다.
 			</p>
 			<!-- /wp:paragraph -->
@@ -31,11 +43,11 @@
 
 			<!-- wp:list {"style":{"color":{"text":"#FFFFFF"},"typography":{"fontSize":"0.875rem"},"spacing":{"padding":{"left":"0"}}},"className":"footer-nav-list"} -->
 			<ul class="footer-nav-list" style="color:#FFFFFF;font-size:0.875rem;padding-left:0">
-				<li><a href="/lahaph/intro" style="color:#FFFFFF;text-decoration:none;">라하프 소개</a></li>
-				<li><a href="/musical" style="color:#FFFFFF;text-decoration:none;">뮤지컬 공연</a></li>
-				<li><a href="/art-college/intro" style="color:#FFFFFF;text-decoration:none;">Art College</a></li>
-				<li><a href="/academy/intro" style="color:#FFFFFF;text-decoration:none;">Academy</a></li>
-				<li><a href="/board/notices" style="color:#FFFFFF;text-decoration:none;">공연 알림</a></li>
+				<li><a href="/lahaph/intro" style="color:rgba(255,255,255,0.85);text-decoration:none;">라하프 소개</a></li>
+				<li><a href="/musical" style="color:rgba(255,255,255,0.85);text-decoration:none;">뮤지컬 공연</a></li>
+				<li><a href="/art-college/intro" style="color:rgba(255,255,255,0.85);text-decoration:none;">Art College</a></li>
+				<li><a href="/academy/intro" style="color:rgba(255,255,255,0.85);text-decoration:none;">Academy</a></li>
+				<li><a href="/board/notices" style="color:rgba(255,255,255,0.85);text-decoration:none;">공연 알림</a></li>
 			</ul>
 			<!-- /wp:list -->
 
@@ -49,11 +61,11 @@
 			<h4 style="color:#FFFFFF;font-size:0.9375rem;font-weight:600;margin-bottom:var(--wp--preset--spacing--20)">연락처</h4>
 			<!-- /wp:heading -->
 
-			<!-- wp:paragraph {"style":{"color":{"text":"#FFFFFF"},"typography":{"fontSize":"0.875rem","lineHeight":"2"}}} -->
-			<p style="color:#FFFFFF;font-size:0.875rem;line-height:2">
-				📍 서울특별시 마포구 서교동 408-18<br>스페이스빌딩 5층<br>
-				📞 <a href="tel:0233372004" style="color:#FFFFFF;text-decoration:none">02-337-2004</a><br>
-				✉️ <a href="mailto:musicaln@naver.com" style="color:#FFFFFF;text-decoration:none">musicaln@naver.com</a>
+			<!-- wp:paragraph {"className":"footer-contact-info","style":{"color":{"text":"rgba(255,255,255,0.9)"},"typography":{"fontSize":"0.875rem","lineHeight":"2"}}} -->
+			<p class="footer-contact-info" style="color:rgba(255,255,255,0.9);font-size:0.875rem;line-height:2">
+				서울특별시 마포구 서교동 408-18<br>스페이스빌딩 5층<br>
+				<a href="tel:0233372004" style="color:rgba(255,255,255,0.9);text-decoration:none">02-337-2004</a><br>
+				<a href="mailto:musicaln@naver.com" style="color:rgba(255,255,255,0.9);text-decoration:none">musicaln@naver.com</a>
 			</p>
 			<!-- /wp:paragraph -->
 
@@ -61,10 +73,10 @@
 			<div style="height:var(--wp--preset--spacing--20)" aria-hidden="true" class="wp-block-spacer"></div>
 			<!-- /wp:spacer -->
 
-			<!-- wp:paragraph {"style":{"color":{"text":"rgba(255,255,255,0.7)"},"typography":{"fontSize":"0.875rem"}}} -->
-			<p style="color:rgba(255,255,255,0.7);font-size:0.875rem">
-				<a href="https://www.youtube.com/channel/UCpkCPxWdDI18VV6JGLGTKJw" style="color:rgba(255,255,255,0.7);text-decoration:none;margin-right:12px" target="_blank" rel="noopener">▶ YouTube</a>
-				<a href="https://blog.naver.com/musicaln" style="color:rgba(255,255,255,0.7);text-decoration:none" target="_blank" rel="noopener">📝 Blog</a>
+			<!-- wp:paragraph {"className":"footer-social-links","style":{"color":{"text":"rgba(255,255,255,0.7)"},"typography":{"fontSize":"0.875rem"}}} -->
+			<p class="footer-social-links" style="color:rgba(255,255,255,0.7);font-size:0.875rem">
+				<a href="https://www.youtube.com/channel/UCpkCPxWdDI18VV6JGLGTKJw" style="color:rgba(255,255,255,0.7);text-decoration:none;margin-right:16px" target="_blank" rel="noopener">YouTube</a>
+				<a href="https://blog.naver.com/musicaln" style="color:rgba(255,255,255,0.7);text-decoration:none" target="_blank" rel="noopener">Blog</a>
 			</p>
 			<!-- /wp:paragraph -->
 
@@ -74,8 +86,8 @@
 
 			<!-- wp:buttons -->
 			<div class="wp-block-buttons">
-				<!-- wp:button {"backgroundColor":"primary-green","textColor":"white","style":{"border":{"radius":"6px"},"typography":{"fontSize":"0.875rem"}}} -->
-				<div class="wp-block-button"><a class="wp-block-button__link has-white-color has-primary-green-background-color has-text-color has-background wp-element-button" href="/inquiry" style="border-radius:6px;font-size:0.875rem">문의하기</a></div>
+				<!-- wp:button {"backgroundColor":"primary-green","textColor":"white","style":{"border":{"radius":"20px"},"typography":{"fontSize":"0.875rem"},"spacing":{"padding":{"top":"8px","bottom":"8px","left":"20px","right":"20px"}}}} -->
+				<div class="wp-block-button"><a class="wp-block-button__link has-white-color has-primary-green-background-color has-text-color has-background wp-element-button" href="/inquiry" style="border-radius:20px;font-size:0.875rem;padding:8px 20px">문의하기</a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->
@@ -86,11 +98,11 @@
 	</div>
 	<!-- /wp:columns -->
 
-	<!-- wp:separator {"style":{"color":{"background":"rgba(255,255,255,0.2)"},"spacing":{"margin":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|30"}}}} -->
-	<hr class="wp-block-separator has-alpha-channel-opacity has-text-color has-background" style="background-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.2);margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--30)"/>
+	<!-- wp:separator {"className":"footer-divider","style":{"color":{"background":"rgba(255,255,255,0.2)"},"spacing":{"margin":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|30"}}}} -->
+	<hr class="wp-block-separator footer-divider has-alpha-channel-opacity has-text-color has-background" style="background-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.2);margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--30)"/>
 	<!-- /wp:separator -->
 
-	<!-- wp:group {"layout":{"type":"flex","justifyContent":"space-between","flexWrap":"wrap"}} -->
+	<!-- wp:group {"layout":{"type":"flex","justifyContent":"space-between","flexWrap":"wrap","blockGap":"var:preset|spacing|20"}} -->
 	<div class="wp-block-group">
 
 		<!-- wp:paragraph {"style":{"color":{"text":"rgba(255,255,255,0.6)"},"typography":{"fontSize":"0.8125rem"}}} -->

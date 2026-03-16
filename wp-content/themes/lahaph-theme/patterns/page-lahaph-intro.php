@@ -10,12 +10,25 @@
 ?>
 
 <!-- ① 소개 본문 -->
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--50)">
 
 	<!-- wp:paragraph {"style":{"color":{"text":"#333333"},"typography":{"fontSize":"var:preset|font-size|large","lineHeight":"1.9"}}} -->
 	<p style="color:#333333;font-size:var(--wp--preset--font-size--large);line-height:1.9">라하프는 성인기 발달장애인 부모들을 중심으로 시작된 문화예술 공동체입니다. 자녀들을 위한 뮤지컬 프로그램으로 출발해, 현재는 공연과 예술교육, 직업 개발, 지도자 양성까지 확장된 활동을 이어가고 있습니다.</p>
 	<!-- /wp:paragraph -->
+
+	<!-- wp:spacer {"height":"var:preset|spacing|40"} -->
+	<div style="height:var(--wp--preset--spacing--40)" aria-hidden="true" class="wp-block-spacer"></div>
+	<!-- /wp:spacer -->
+
+	<!-- 풀 인용문 -->
+	<!-- wp:group {"style":{"color":{"background":"#F8F8F8"},"border":{"left":{"width":"4px","color":"var:preset|color|primary-green"}},"spacing":{"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"layout":{"type":"default"}} -->
+	<div class="wp-block-group" style="background-color:#F8F8F8;border-left:4px solid var(--wp--preset--color--primary-green);padding:var(--wp--preset--spacing--30) var(--wp--preset--spacing--40)">
+		<!-- wp:paragraph {"style":{"color":{"text":"#333333"},"typography":{"fontSize":"var:preset|font-size|x-large","lineHeight":"1.75","fontStyle":"italic","fontWeight":"500"}}} -->
+		<p style="color:#333333;font-size:var(--wp--preset--font-size--x-large);line-height:1.75;font-style:italic;font-weight:500">"예술은 발달장애인이 자신을 표현하고 세상과 연결되는 가장 강력한 언어입니다."</p>
+		<!-- /wp:paragraph -->
+	</div>
+	<!-- /wp:group -->
 
 </div>
 <!-- /wp:group -->
@@ -24,6 +37,10 @@
 <!-- ② 주요 활동 카드 -->
 <!-- wp:group {"style":{"color":{"background":"#F8F8F8"},"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group" style="background-color:#F8F8F8;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
+
+	<!-- wp:paragraph {"className":"lahaph-section-label","style":{"color":{"text":"var:preset|color|primary-green"}}} -->
+	<p class="lahaph-section-label" style="color:var(--wp--preset--color--primary-green)">ABOUT LAHAPH</p>
+	<!-- /wp:paragraph -->
 
 	<!-- wp:heading {"level":2,"style":{"color":{"text":"var:preset|color|deep-navy"},"typography":{"fontSize":"var:preset|font-size|xx-large","fontWeight":"700"},"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} -->
 	<h2 class="wp-block-heading" style="color:var(--wp--preset--color--deep-navy);font-size:var(--wp--preset--font-size--xx-large);font-weight:700;margin-bottom:var(--wp--preset--spacing--40)">주요 활동</h2>
@@ -34,8 +51,11 @@
 
 		<!-- wp:column -->
 		<div class="wp-block-column">
-			<!-- wp:group {"style":{"color":{"background":"#FFFFFF"},"border":{"radius":"8px","left":{"width":"4px","color":"var:preset|color|primary-green"}},"spacing":{"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30","right":"var:preset|spacing|30"}}},"layout":{"type":"default"}} -->
-			<div class="wp-block-group" style="background-color:#FFFFFF;border-radius:8px;border-left:4px solid var(--wp--preset--color--primary-green);padding:var(--wp--preset--spacing--30)">
+			<!-- wp:group {"className":"lahaph-card","style":{"color":{"background":"#FFFFFF"},"border":{"radius":"8px","left":{"width":"4px","color":"var:preset|color|primary-green"}},"spacing":{"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30","right":"var:preset|spacing|30"}}},"layout":{"type":"default"}} -->
+			<div class="wp-block-group lahaph-card" style="background-color:#FFFFFF;border-radius:8px;border-left:4px solid var(--wp--preset--color--primary-green);padding:var(--wp--preset--spacing--30)">
+				<!-- wp:paragraph {"style":{"color":{"text":"var:preset|color|primary-green"},"typography":{"fontSize":"var:preset|font-size|large","fontWeight":"700","lineHeight":"1"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
+				<p style="color:var(--wp--preset--color--primary-green);font-size:var(--wp--preset--font-size--large);font-weight:700;line-height:1;margin-bottom:var(--wp--preset--spacing--20)">01</p>
+				<!-- /wp:paragraph -->
 				<!-- wp:heading {"level":4,"style":{"color":{"text":"var:preset|color|deep-navy"},"typography":{"fontWeight":"700"}}} -->
 				<h4 class="wp-block-heading" style="color:var(--wp--preset--color--deep-navy);font-weight:700">창작 뮤지컬 제작 및 공연</h4>
 				<!-- /wp:heading -->
@@ -49,8 +69,11 @@
 
 		<!-- wp:column -->
 		<div class="wp-block-column">
-			<!-- wp:group {"style":{"color":{"background":"#FFFFFF"},"border":{"radius":"8px","left":{"width":"4px","color":"var:preset|color|primary-green"}},"spacing":{"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30","right":"var:preset|spacing|30"}}},"layout":{"type":"default"}} -->
-			<div class="wp-block-group" style="background-color:#FFFFFF;border-radius:8px;border-left:4px solid var(--wp--preset--color--primary-green);padding:var(--wp--preset--spacing--30)">
+			<!-- wp:group {"className":"lahaph-card","style":{"color":{"background":"#FFFFFF"},"border":{"radius":"8px","left":{"width":"4px","color":"var:preset|color|primary-green"}},"spacing":{"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30","right":"var:preset|spacing|30"}}},"layout":{"type":"default"}} -->
+			<div class="wp-block-group lahaph-card" style="background-color:#FFFFFF;border-radius:8px;border-left:4px solid var(--wp--preset--color--primary-green);padding:var(--wp--preset--spacing--30)">
+				<!-- wp:paragraph {"style":{"color":{"text":"var:preset|color|primary-green"},"typography":{"fontSize":"var:preset|font-size|large","fontWeight":"700","lineHeight":"1"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
+				<p style="color:var(--wp--preset--color--primary-green);font-size:var(--wp--preset--font-size--large);font-weight:700;line-height:1;margin-bottom:var(--wp--preset--spacing--20)">02</p>
+				<!-- /wp:paragraph -->
 				<!-- wp:heading {"level":4,"style":{"color":{"text":"var:preset|color|deep-navy"},"typography":{"fontWeight":"700"}}} -->
 				<h4 class="wp-block-heading" style="color:var(--wp--preset--color--deep-navy);font-weight:700">발달장애 맞춤형 예술교육</h4>
 				<!-- /wp:heading -->
@@ -64,8 +87,11 @@
 
 		<!-- wp:column -->
 		<div class="wp-block-column">
-			<!-- wp:group {"style":{"color":{"background":"#FFFFFF"},"border":{"radius":"8px","left":{"width":"4px","color":"var:preset|color|primary-green"}},"spacing":{"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30","right":"var:preset|spacing|30"}}},"layout":{"type":"default"}} -->
-			<div class="wp-block-group" style="background-color:#FFFFFF;border-radius:8px;border-left:4px solid var(--wp--preset--color--primary-green);padding:var(--wp--preset--spacing--30)">
+			<!-- wp:group {"className":"lahaph-card","style":{"color":{"background":"#FFFFFF"},"border":{"radius":"8px","left":{"width":"4px","color":"var:preset|color|primary-green"}},"spacing":{"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30","right":"var:preset|spacing|30"}}},"layout":{"type":"default"}} -->
+			<div class="wp-block-group lahaph-card" style="background-color:#FFFFFF;border-radius:8px;border-left:4px solid var(--wp--preset--color--primary-green);padding:var(--wp--preset--spacing--30)">
+				<!-- wp:paragraph {"style":{"color":{"text":"var:preset|color|primary-green"},"typography":{"fontSize":"var:preset|font-size|large","fontWeight":"700","lineHeight":"1"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
+				<p style="color:var(--wp--preset--color--primary-green);font-size:var(--wp--preset--font-size--large);font-weight:700;line-height:1;margin-bottom:var(--wp--preset--spacing--20)">03</p>
+				<!-- /wp:paragraph -->
 				<!-- wp:heading {"level":4,"style":{"color":{"text":"var:preset|color|deep-navy"},"typography":{"fontWeight":"700"}}} -->
 				<h4 class="wp-block-heading" style="color:var(--wp--preset--color--deep-navy);font-weight:700">문화예술 기반 직업 개발</h4>
 				<!-- /wp:heading -->
@@ -79,8 +105,11 @@
 
 		<!-- wp:column -->
 		<div class="wp-block-column">
-			<!-- wp:group {"style":{"color":{"background":"#FFFFFF"},"border":{"radius":"8px","left":{"width":"4px","color":"var:preset|color|primary-green"}},"spacing":{"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30","right":"var:preset|spacing|30"}}},"layout":{"type":"default"}} -->
-			<div class="wp-block-group" style="background-color:#FFFFFF;border-radius:8px;border-left:4px solid var(--wp--preset--color--primary-green);padding:var(--wp--preset--spacing--30)">
+			<!-- wp:group {"className":"lahaph-card","style":{"color":{"background":"#FFFFFF"},"border":{"radius":"8px","left":{"width":"4px","color":"var:preset|color|primary-green"}},"spacing":{"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30","left":"var:preset|spacing|30","right":"var:preset|spacing|30"}}},"layout":{"type":"default"}} -->
+			<div class="wp-block-group lahaph-card" style="background-color:#FFFFFF;border-radius:8px;border-left:4px solid var(--wp--preset--color--primary-green);padding:var(--wp--preset--spacing--30)">
+				<!-- wp:paragraph {"style":{"color":{"text":"var:preset|color|primary-green"},"typography":{"fontSize":"var:preset|font-size|large","fontWeight":"700","lineHeight":"1"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
+				<p style="color:var(--wp--preset--color--primary-green);font-size:var(--wp--preset--font-size--large);font-weight:700;line-height:1;margin-bottom:var(--wp--preset--spacing--20)">04</p>
+				<!-- /wp:paragraph -->
 				<!-- wp:heading {"level":4,"style":{"color":{"text":"var:preset|color|deep-navy"},"typography":{"fontWeight":"700"}}} -->
 				<h4 class="wp-block-heading" style="color:var(--wp--preset--color--deep-navy);font-weight:700">발달장애 예술인 지도자 양성</h4>
 				<!-- /wp:heading -->
