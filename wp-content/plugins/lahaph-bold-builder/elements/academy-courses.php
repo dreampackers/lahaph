@@ -15,75 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-function lahaph_bb_register_academy_courses(): void {
-	if ( ! function_exists( 'bt_bb_add_shortcode' ) ) {
-		return;
-	}
-
-	bt_bb_add_shortcode(
-		'lahaph_academy_courses',
-		'아카데미 과정 목록',
-		'',
-		[
-			[
-				'name'  => 'category',
-				'title' => '과정 분류 슬러그',
-				'type'  => 'text',
-				'value' => '',
-				'help'  => '예: 음악, 무용-댄스, 미술, 생활, 미디어 — 비워두면 전체',
-			],
-			[
-				'name'  => 'columns',
-				'title' => '열 수',
-				'type'  => 'select',
-				'value' => '3',
-				'values' => [
-					[ 'name' => '2열', 'value' => '2' ],
-					[ 'name' => '3열', 'value' => '3' ],
-					[ 'name' => '4열', 'value' => '4' ],
-				],
-			],
-			[
-				'name'  => 'posts_per_page',
-				'title' => '표시 개수',
-				'type'  => 'text',
-				'value' => '12',
-			],
-			[
-				'name'  => 'show_time',
-				'title' => '운영 시간 표시',
-				'type'  => 'select',
-				'value' => 'yes',
-				'values' => [
-					[ 'name' => '표시', 'value' => 'yes' ],
-					[ 'name' => '숨김', 'value' => 'no' ],
-				],
-			],
-			[
-				'name'  => 'show_category',
-				'title' => '분류 태그 표시',
-				'type'  => 'select',
-				'value' => 'yes',
-				'values' => [
-					[ 'name' => '표시', 'value' => 'yes' ],
-					[ 'name' => '숨김', 'value' => 'no' ],
-				],
-			],
-			[
-				'name'  => 'layout',
-				'title' => '레이아웃',
-				'type'  => 'select',
-				'value' => 'card',
-				'values' => [
-					[ 'name' => '카드형', 'value' => 'card' ],
-					[ 'name' => '목록형', 'value' => 'list' ],
-				],
-			],
-		],
-		'academy_course CPT를 과정 목록으로 출력합니다.'
-	);
-}
-
+/* ── 숏코드 렌더 (BBP 미활성 시 폴백) ───────────────────── */
 add_shortcode( 'lahaph_academy_courses', 'lahaph_bb_render_academy_courses' );
 
 function lahaph_bb_render_academy_courses( array $atts ): string {

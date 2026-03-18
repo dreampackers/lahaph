@@ -16,51 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-function lahaph_bb_register_inquiry_form(): void {
-	if ( ! function_exists( 'bt_bb_add_shortcode' ) ) {
-		return;
-	}
-
-	bt_bb_add_shortcode(
-		'lahaph_inquiry_block',
-		'라하프 문의 폼',
-		'',
-		[
-			[
-				'name'  => 'title',
-				'title' => '폼 제목',
-				'type'  => 'text',
-				'value' => '상담 신청',
-				'help'  => '폼 위에 표시할 제목',
-			],
-			[
-				'name'  => 'description',
-				'title' => '폼 설명',
-				'type'  => 'textarea',
-				'value' => '아이의 이름과 연락처를 남겨주시면 담당자가 연락드립니다.',
-			],
-			[
-				'name'  => 'show_card',
-				'title' => '카드 배경 표시',
-				'type'  => 'select',
-				'value' => 'yes',
-				'values' => [
-					[ 'name' => '표시 (흰색 카드)', 'value' => 'yes' ],
-					[ 'name' => '배경 없음',        'value' => 'no' ],
-				],
-			],
-			[
-				'name'  => 'card_bg',
-				'title' => '카드 배경색',
-				'type'  => 'color',
-				'value' => '#FFFFFF',
-				'help'  => 'show_card가 "표시"일 때 적용됩니다.',
-			],
-		],
-		'라하프 상담 신청 폼을 삽입합니다. (lahaph-inquiry 플러그인 필요)'
-	);
-}
-
+/* ── 숏코드 렌더 (BBP 미활성 시 폴백) ───────────────────── */
 add_shortcode( 'lahaph_inquiry_block', 'lahaph_bb_render_inquiry_form' );
 
 function lahaph_bb_render_inquiry_form( array $atts ): string {

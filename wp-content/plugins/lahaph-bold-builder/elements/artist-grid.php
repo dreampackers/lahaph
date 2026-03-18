@@ -8,58 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-function lahaph_bb_register_artist_grid(): void {
-	if ( ! function_exists( 'bt_bb_add_shortcode' ) ) {
-		return;
-	}
-
-	bt_bb_add_shortcode(
-		'lahaph_artist_grid',
-		'아티스트 그리드',
-		'',
-		[
-			[
-				'name'  => 'columns',
-				'title' => '열 수',
-				'type'  => 'select',
-				'value' => '3',
-				'values' => [
-					[ 'name' => '2열', 'value' => '2' ],
-					[ 'name' => '3열', 'value' => '3' ],
-					[ 'name' => '4열', 'value' => '4' ],
-				],
-			],
-			[
-				'name'  => 'posts_per_page',
-				'title' => '표시 개수',
-				'type'  => 'text',
-				'value' => '12',
-			],
-			[
-				'name'  => 'show_summary',
-				'title' => '소개 요약 표시',
-				'type'  => 'select',
-				'value' => 'yes',
-				'values' => [
-					[ 'name' => '표시', 'value' => 'yes' ],
-					[ 'name' => '숨김', 'value' => 'no' ],
-				],
-			],
-			[
-				'name'  => 'link_to_profile',
-				'title' => '프로필 페이지 링크',
-				'type'  => 'select',
-				'value' => 'no',
-				'values' => [
-					[ 'name' => '링크 없음',       'value' => 'no' ],
-					[ 'name' => '단일 포스트 링크', 'value' => 'yes' ],
-				],
-			],
-		],
-		'artist CPT를 카드 그리드로 출력합니다.'
-	);
-}
-
+/* ── 숏코드 렌더 (BBP 미활성 시 폴백) ───────────────────── */
 add_shortcode( 'lahaph_artist_grid', 'lahaph_bb_render_artist_grid' );
 
 function lahaph_bb_render_artist_grid( array $atts ): string {

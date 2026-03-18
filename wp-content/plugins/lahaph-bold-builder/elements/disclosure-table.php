@@ -15,64 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-function lahaph_bb_register_disclosure_table(): void {
-	if ( ! function_exists( 'bt_bb_add_shortcode' ) ) {
-		return;
-	}
-
-	bt_bb_add_shortcode(
-		'lahaph_disclosure_table',
-		'공시 서류 목록',
-		'',
-		[
-			[
-				'name'  => 'year',
-				'title' => '연도 필터',
-				'type'  => 'text',
-				'value' => '',
-				'help'  => '예: 2023 — 비워두면 전체 연도 표시',
-			],
-			[
-				'name'  => 'posts_per_page',
-				'title' => '표시 개수',
-				'type'  => 'text',
-				'value' => '20',
-			],
-			[
-				'name'  => 'show_year_col',
-				'title' => '연도 컬럼 표시',
-				'type'  => 'select',
-				'value' => 'yes',
-				'values' => [
-					[ 'name' => '표시', 'value' => 'yes' ],
-					[ 'name' => '숨김', 'value' => 'no' ],
-				],
-			],
-			[
-				'name'  => 'show_summary',
-				'title' => '요약 컬럼 표시',
-				'type'  => 'select',
-				'value' => 'yes',
-				'values' => [
-					[ 'name' => '표시', 'value' => 'yes' ],
-					[ 'name' => '숨김', 'value' => 'no' ],
-				],
-			],
-			[
-				'name'  => 'show_download',
-				'title' => '다운로드 버튼 표시',
-				'type'  => 'select',
-				'value' => 'yes',
-				'values' => [
-					[ 'name' => '표시', 'value' => 'yes' ],
-					[ 'name' => '숨김', 'value' => 'no' ],
-				],
-			],
-		],
-		'disclosure CPT(법인 공시 서류)를 테이블로 출력합니다.'
-	);
-}
-
+/* ── 숏코드 렌더 (BBP 미활성 시 폴백) ───────────────────── */
 add_shortcode( 'lahaph_disclosure_table', 'lahaph_bb_render_disclosure_table' );
 
 function lahaph_bb_render_disclosure_table( array $atts ): string {

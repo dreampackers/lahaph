@@ -3,7 +3,7 @@
  * Plugin Name: Lahaph Bold Page Builder Elements
  * Plugin URI: https://lahaph.org
  * Description: Bold Page Builder 전용 커스텀 요소. 뮤지컬·멤버·아티스트·아카데미·콘텐츠·공연 알림·공시 서류·문의 폼·연락처 CPT를 빌더 안에서 동적으로 연결합니다.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Requires at least: 6.4
  * Requires PHP: 8.0
  * Author: Lahaph
@@ -16,16 +16,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'LAHAPH_BB_VERSION', '1.0.0' );
+define( 'LAHAPH_BB_VERSION', '1.1.0' );
 define( 'LAHAPH_BB_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LAHAPH_BB_URL', plugin_dir_url( __FILE__ ) );
 
 /* ─────────────────────────────────────────────────────────────
-   요소 파일 로드
+   Bold Page Builder 가 활성화되지 않은 경우 — 독립 숏코드 폴백
+   BBP 활성 시에는 테마의 bold-page-builder/content_elements/ 클래스가
+   shortcode를 자동 등록하므로 이 블록은 실행되지 않습니다.
 ───────────────────────────────────────────────────────────── */
-add_action( 'init', 'lahaph_bb_load_elements', 5 );
+add_action( 'init', 'lahaph_bb_load_fallback_elements', 20 );
 
-function lahaph_bb_load_elements(): void {
+function lahaph_bb_load_fallback_elements(): void {
+	// BBP 가 활성화되어 있으면 테마 클래스가 shortcode 를 등록 — 중복 방지
+	if ( class_exists( 'BT_BB_Element' ) ) {
+		return;
+	}
+
 	$elements = [
 		'musical-loop',
 		'member-grid',
@@ -44,32 +51,6 @@ function lahaph_bb_load_elements(): void {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   Bold Page Builder 요소 등록 (빌더 활성화 시)
-───────────────────────────────────────────────────────────── */
-add_action( 'bt_bb_ready', 'lahaph_bb_register_elements' );
-
-function lahaph_bb_register_elements(): void {
-	// 각 요소 파일에서 lahaph_bb_register_{slug}() 를 호출합니다.
-	$callbacks = [
-		'lahaph_bb_register_musical_loop',
-		'lahaph_bb_register_member_grid',
-		'lahaph_bb_register_artist_grid',
-		'lahaph_bb_register_academy_courses',
-		'lahaph_bb_register_video_grid',
-		'lahaph_bb_register_notice_list',
-		'lahaph_bb_register_disclosure_table',
-		'lahaph_bb_register_inquiry_form',
-		'lahaph_bb_register_contact_info',
-	];
-
-	foreach ( $callbacks as $callback ) {
-		if ( function_exists( $callback ) ) {
-			call_user_func( $callback );
-		}
-	}
-}
-
-/* ─────────────────────────────────────────────────────────────
    프론트엔드 스타일
 ───────────────────────────────────────────────────────────── */
 add_action( 'wp_enqueue_scripts', 'lahaph_bb_enqueue_styles' );
@@ -84,12 +65,12 @@ function lahaph_bb_enqueue_styles(): void {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   관리자 — 활성화 알림
+   관리자 — 활성화 알림 (BBP 미설치 시 경고)
 ───────────────────────────────────────────────────────────── */
 add_action( 'admin_notices', 'lahaph_bb_admin_notice' );
 
 function lahaph_bb_admin_notice(): void {
-	if ( function_exists( 'bt_bb_add_shortcode' ) ) {
+	if ( class_exists( 'BT_BB_Root' ) ) {
 		return; // Bold Page Builder 정상 감지 — 알림 없음
 	}
 	?>

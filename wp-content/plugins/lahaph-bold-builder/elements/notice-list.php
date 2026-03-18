@@ -15,69 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-function lahaph_bb_register_notice_list(): void {
-	if ( ! function_exists( 'bt_bb_add_shortcode' ) ) {
-		return;
-	}
-
-	bt_bb_add_shortcode(
-		'lahaph_notice_list',
-		'공연 알림 목록',
-		'',
-		[
-			[
-				'name'  => 'posts_per_page',
-				'title' => '표시 개수',
-				'type'  => 'text',
-				'value' => '10',
-			],
-			[
-				'name'  => 'status_filter',
-				'title' => '상태 필터',
-				'type'  => 'select',
-				'value' => 'all',
-				'values' => [
-					[ 'name' => '전체',   'value' => 'all' ],
-					[ 'name' => '모집중', 'value' => '모집중' ],
-					[ 'name' => '예정',   'value' => '예정' ],
-					[ 'name' => '마감',   'value' => '마감' ],
-				],
-			],
-			[
-				'name'  => 'layout',
-				'title' => '레이아웃',
-				'type'  => 'select',
-				'value' => 'card',
-				'values' => [
-					[ 'name' => '카드형', 'value' => 'card' ],
-					[ 'name' => '목록형', 'value' => 'list' ],
-				],
-			],
-			[
-				'name'  => 'show_date',
-				'title' => '공연 날짜 표시',
-				'type'  => 'select',
-				'value' => 'yes',
-				'values' => [
-					[ 'name' => '표시', 'value' => 'yes' ],
-					[ 'name' => '숨김', 'value' => 'no' ],
-				],
-			],
-			[
-				'name'  => 'show_status',
-				'title' => '상태 뱃지 표시',
-				'type'  => 'select',
-				'value' => 'yes',
-				'values' => [
-					[ 'name' => '표시', 'value' => 'yes' ],
-					[ 'name' => '숨김', 'value' => 'no' ],
-				],
-			],
-		],
-		'notice CPT(공연 알림)를 목록으로 출력합니다.'
-	);
-}
-
+/* ── 숏코드 렌더 (BBP 미활성 시 폴백) ───────────────────── */
 add_shortcode( 'lahaph_notice_list', 'lahaph_bb_render_notice_list' );
 
 function lahaph_bb_render_notice_list( array $atts ): string {
