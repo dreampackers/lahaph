@@ -1,0 +1,1 @@
+[bt_bb_schedule image_position="" shape="" link_title="" supertitle="Supertitle" title="Title" image="" content="monday;7pm;MON;location;free" color_scheme="" url="" target="_self" responsive="" publish_datetime="" expiry_datetime="" animation="no_animation,;,,;,,;,,;,,;," el_id="" el_class="" el_style=""][/bt_bb_schedule]

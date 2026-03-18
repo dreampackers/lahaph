@@ -1,0 +1,1 @@
+[bt_bb_floating_image vertical_position="default" horizontal_position="default" lazy_load="no" animation_style="ease_out" animation_delay="default" animation_duration="default" animation_speed="1.0" image="" responsive="" publish_datetime="" expiry_datetime="" animation="no_animation,;,,;,,;,,;,,;," el_id="" el_class="" el_style=""][/bt_bb_floating_image]
