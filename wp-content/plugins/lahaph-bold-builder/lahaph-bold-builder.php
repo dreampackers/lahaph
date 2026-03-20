@@ -3,7 +3,7 @@
  * Plugin Name: Lahaph Bold Page Builder Elements
  * Plugin URI: https://lahaph.org
  * Description: Bold Page Builder 전용 커스텀 요소. 뮤지컬·멤버·아티스트·아카데미·콘텐츠·공연 알림·공시 서류·문의 폼·연락처 CPT를 빌더 안에서 동적으로 연결합니다.
- * Version: 1.1.0
+ * Version: 1.2.0
  * Requires at least: 6.4
  * Requires PHP: 8.0
  * Author: Lahaph
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'LAHAPH_BB_VERSION', '1.1.0' );
+define( 'LAHAPH_BB_VERSION', '1.2.0' );
 define( 'LAHAPH_BB_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LAHAPH_BB_URL', plugin_dir_url( __FILE__ ) );
 
