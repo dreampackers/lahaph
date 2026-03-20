@@ -54,13 +54,13 @@ class lahaph_artist_grid extends BT_BB_Element {
 					<?php $inner_close = $url ? '</a>' : '</div>'; ?>
 					<?php echo wp_kses_post( $inner_open ); ?>
 						<?php if ( has_post_thumbnail() ) : ?>
-							<div class="lahaph-bb-artist-card__photo"><?php the_post_thumbnail( [ 100, 100 ] ); ?></div>
+							<div class="lahaph-bb-artist-card__photo"><?php the_post_thumbnail( 'medium' ); ?></div>
 						<?php endif; ?>
-						<div class="lahaph-bb-artist-card__info">
-							<strong class="lahaph-bb-artist-card__name"><?php the_title(); ?></strong>
+						<div class="lahaph-bb-artist-card__body">
 							<?php if ( $role ) : ?>
 								<span class="lahaph-bb-artist-card__role"><?php echo esc_html( $role ); ?></span>
 							<?php endif; ?>
+							<strong class="lahaph-bb-artist-card__name"><?php the_title(); ?></strong>
 							<?php if ( 'yes' === $a['show_summary'] && $summary ) : ?>
 								<p class="lahaph-bb-artist-card__summary"><?php echo esc_html( wp_trim_words( $summary, 18 ) ); ?></p>
 							<?php endif; ?>

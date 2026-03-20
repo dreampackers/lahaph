@@ -65,18 +65,23 @@ class lahaph_member_grid extends BT_BB_Element {
 				?>
 				<div class="<?php echo esc_attr( $card_class ); ?>">
 					<?php if ( 'yes' === $a['show_photo'] && has_post_thumbnail() ) : ?>
-						<div class="lahaph-bb-member-card__photo"><?php the_post_thumbnail( [ 80, 80 ] ); ?></div>
+						<div class="lahaph-bb-member-card__photo">
+							<?php
+							$thumb_size = ( 'card' === $a['style'] ) ? 'medium' : [ 56, 56 ];
+							the_post_thumbnail( $thumb_size );
+							?>
+						</div>
 					<?php endif; ?>
-					<div class="lahaph-bb-member-card__info">
-						<strong class="lahaph-bb-member-card__name"><?php the_title(); ?></strong>
+					<div class="lahaph-bb-member-card__body">
 						<?php if ( 'yes' === $a['show_role'] && $role ) : ?>
 							<span class="lahaph-bb-member-card__role"><?php echo esc_html( $role ); ?></span>
 						<?php endif; ?>
+						<strong class="lahaph-bb-member-card__name"><?php the_title(); ?></strong>
 						<?php if ( 'yes' === $a['show_affiliation'] && $affiliation ) : ?>
 							<span class="lahaph-bb-member-card__affiliation"><?php echo esc_html( $affiliation ); ?></span>
 						<?php endif; ?>
 						<?php if ( $summary ) : ?>
-							<p class="lahaph-bb-member-card__summary"><?php echo esc_html( wp_trim_words( $summary, 15 ) ); ?></p>
+							<p class="lahaph-bb-member-card__summary"><?php echo esc_html( wp_trim_words( $summary, 18 ) ); ?></p>
 						<?php endif; ?>
 					</div>
 				</div>

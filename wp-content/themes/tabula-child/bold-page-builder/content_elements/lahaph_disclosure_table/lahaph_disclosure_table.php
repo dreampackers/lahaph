@@ -14,6 +14,7 @@ class lahaph_disclosure_table extends BT_BB_Element {
 		$a = shortcode_atts( apply_filters( 'bt_bb_extract_atts_' . $this->shortcode, [
 			'year'           => '',
 			'posts_per_page' => '20',
+			'layout'         => 'table',
 			'show_year_col'  => 'yes',
 			'show_summary'   => 'yes',
 			'show_download'  => 'yes',
@@ -48,52 +49,97 @@ class lahaph_disclosure_table extends BT_BB_Element {
 		}
 
 		$id_attr    = $a['el_id'] ? ' id="' . esc_attr( $a['el_id'] ) . '"' : '';
-		$class_attr = trim( $this->shortcode . ' lahaph-bb-disclosure-wrap ' . $a['el_class'] );
 		$style_attr = $a['el_style'] ? ' style="' . esc_attr( $a['el_style'] ) . '"' : '';
 
 		ob_start();
-		?>
-		<div<?php echo $id_attr; ?> class="<?php echo esc_attr( $class_attr ); ?>"<?php echo $style_attr; ?>>
-			<table class="lahaph-bb-table">
-				<thead>
-					<tr>
-						<th>서류 제목</th>
-						<?php if ( 'yes' === $a['show_year_col'] ) : ?><th>연도</th><?php endif; ?>
-						<?php if ( 'yes' === $a['show_summary'] ) : ?><th>요약</th><?php endif; ?>
-						<?php if ( 'yes' === $a['show_download'] ) : ?><th>파일</th><?php endif; ?>
-					</tr>
-				</thead>
-				<tbody>
-					<?php while ( $query->have_posts() ) : $query->the_post(); ?>
-						<?php
-						$year_val = get_post_meta( get_the_ID(), 'lahaph_disclosure_year', true );
-						$summary  = get_post_meta( get_the_ID(), 'lahaph_summary', true );
-						$file_id  = get_post_meta( get_the_ID(), 'lahaph_attached_file', true );
-						$file_url = $file_id ? wp_get_attachment_url( $file_id ) : '';
-						?>
-						<tr>
-							<td><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></td>
-							<?php if ( 'yes' === $a['show_year_col'] ) : ?>
-								<td><?php echo $year_val ? esc_html( $year_val ) : '—'; ?></td>
+
+		if ( 'card' === $a['layout'] ) :
+			$class_attr = trim( $this->shortcode . ' lahaph-bb-disclosure-cards ' . $a['el_class'] );
+			?>
+			<div<?php echo $id_attr; ?> class="<?php echo esc_attr( $class_attr ); ?>"<?php echo $style_attr; ?>>
+				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+					<?php
+					$year_val = get_post_meta( get_the_ID(), 'lahaph_disclosure_year', true );
+					$summary  = get_post_meta( get_the_ID(), 'lahaph_summary', true );
+					$file_id  = get_post_meta( get_the_ID(), 'lahaph_attached_file', true );
+					$file_url = $file_id ? wp_get_attachment_url( $file_id ) : '';
+					?>
+					<article class="lahaph-bb-disclosure-card">
+						<a href="<?php the_permalink(); ?>" class="lahaph-bb-disclosure-card__link">
+							<?php if ( has_post_thumbnail() ) : ?>
+								<div class="lahaph-bb-disclosure-card__thumb">
+									<?php the_post_thumbnail( 'medium_large' ); ?>
+								</div>
 							<?php endif; ?>
-							<?php if ( 'yes' === $a['show_summary'] ) : ?>
-								<td><?php echo $summary ? esc_html( $summary ) : ''; ?></td>
-							<?php endif; ?>
-							<?php if ( 'yes' === $a['show_download'] ) : ?>
-								<td>
-									<?php if ( $file_url ) : ?>
-										<a href="<?php echo esc_url( $file_url ); ?>" target="_blank" rel="noopener" class="lahaph-bb-btn lahaph-bb-btn--sm lahaph-bb-btn--outline">다운로드</a>
-									<?php else : ?>
-										<span class="lahaph-bb-muted">파일 없음</span>
+							<div class="lahaph-bb-disclosure-card__body">
+								<div class="lahaph-bb-disclosure-card__row">
+									<?php if ( 'yes' === $a['show_year_col'] && $year_val ) : ?>
+										<div class="lahaph-bb-disclosure-card__year-block">
+											<span class="lahaph-bb-disclosure-card__year-label">YEAR</span>
+											<span class="lahaph-bb-disclosure-card__year"><?php echo esc_html( $year_val ); ?></span>
+										</div>
+										<div class="lahaph-bb-disclosure-card__sep"></div>
 									<?php endif; ?>
-								</td>
-							<?php endif; ?>
+									<div class="lahaph-bb-disclosure-card__content">
+										<h3 class="lahaph-bb-disclosure-card__title"><?php the_title(); ?></h3>
+										<?php if ( 'yes' === $a['show_summary'] && $summary ) : ?>
+											<p class="lahaph-bb-disclosure-card__summary"><?php echo esc_html( wp_trim_words( $summary, 18 ) ); ?></p>
+										<?php endif; ?>
+										<?php if ( 'yes' === $a['show_download'] && $file_url ) : ?>
+											<span class="lahaph-bb-cta-link">다운로드 →</span>
+										<?php endif; ?>
+									</div>
+								</div>
+							</div>
+						</a>
+					</article>
+				<?php endwhile; ?>
+			</div>
+		<?php else :
+			$class_attr = trim( $this->shortcode . ' lahaph-bb-disclosure-wrap ' . $a['el_class'] );
+			?>
+			<div<?php echo $id_attr; ?> class="<?php echo esc_attr( $class_attr ); ?>"<?php echo $style_attr; ?>>
+				<table class="lahaph-bb-table">
+					<thead>
+						<tr>
+							<th>서류 제목</th>
+							<?php if ( 'yes' === $a['show_year_col'] ) : ?><th>연도</th><?php endif; ?>
+							<?php if ( 'yes' === $a['show_summary'] ) : ?><th>요약</th><?php endif; ?>
+							<?php if ( 'yes' === $a['show_download'] ) : ?><th>파일</th><?php endif; ?>
 						</tr>
-					<?php endwhile; ?>
-				</tbody>
-			</table>
-		</div>
-		<?php
+					</thead>
+					<tbody>
+						<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+							<?php
+							$year_val = get_post_meta( get_the_ID(), 'lahaph_disclosure_year', true );
+							$summary  = get_post_meta( get_the_ID(), 'lahaph_summary', true );
+							$file_id  = get_post_meta( get_the_ID(), 'lahaph_attached_file', true );
+							$file_url = $file_id ? wp_get_attachment_url( $file_id ) : '';
+							?>
+							<tr>
+								<td><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></td>
+								<?php if ( 'yes' === $a['show_year_col'] ) : ?>
+									<td><?php echo $year_val ? esc_html( $year_val ) : '—'; ?></td>
+								<?php endif; ?>
+								<?php if ( 'yes' === $a['show_summary'] ) : ?>
+									<td><?php echo $summary ? esc_html( $summary ) : ''; ?></td>
+								<?php endif; ?>
+								<?php if ( 'yes' === $a['show_download'] ) : ?>
+									<td>
+										<?php if ( $file_url ) : ?>
+											<a href="<?php echo esc_url( $file_url ); ?>" target="_blank" rel="noopener" class="lahaph-bb-btn lahaph-bb-btn--sm lahaph-bb-btn--outline">다운로드</a>
+										<?php else : ?>
+											<span class="lahaph-bb-muted">파일 없음</span>
+										<?php endif; ?>
+									</td>
+								<?php endif; ?>
+							</tr>
+						<?php endwhile; ?>
+					</tbody>
+				</table>
+			</div>
+		<?php endif;
+
 		wp_reset_postdata();
 		$output = ob_get_clean();
 		$output = apply_filters( 'bt_bb_general_output', $output, $atts );
@@ -103,13 +149,14 @@ class lahaph_disclosure_table extends BT_BB_Element {
 	function map_shortcode() {
 		bt_bb_map( $this->shortcode, [
 			'name'        => '공시 서류 목록',
-			'description' => 'disclosure CPT(법인 공시 서류)를 테이블로 출력합니다.',
+			'description' => 'disclosure CPT(법인 공시 서류)를 테이블 또는 카드로 출력합니다.',
 			'icon'        => 'dashicons-media-spreadsheet',
 			'params'      => [
 				[ 'param_name' => 'year',           'type' => 'textfield', 'heading' => '연도 필터',          'value' => '', 'description' => '예: 2023 — 비워두면 전체 연도 표시' ],
 				[ 'param_name' => 'posts_per_page', 'type' => 'textfield', 'heading' => '표시 개수',           'value' => '20' ],
-				[ 'param_name' => 'show_year_col',  'type' => 'dropdown',  'heading' => '연도 컬럼 표시',      'value' => [ '표시' => 'yes', '숨김' => 'no' ] ],
-				[ 'param_name' => 'show_summary',   'type' => 'dropdown',  'heading' => '요약 컬럼 표시',      'value' => [ '표시' => 'yes', '숨김' => 'no' ] ],
+				[ 'param_name' => 'layout',         'type' => 'dropdown',  'heading' => '레이아웃',            'value' => [ '테이블형' => 'table', '카드형' => 'card' ] ],
+				[ 'param_name' => 'show_year_col',  'type' => 'dropdown',  'heading' => '연도 표시',           'value' => [ '표시' => 'yes', '숨김' => 'no' ] ],
+				[ 'param_name' => 'show_summary',   'type' => 'dropdown',  'heading' => '요약 표시',           'value' => [ '표시' => 'yes', '숨김' => 'no' ] ],
 				[ 'param_name' => 'show_download',  'type' => 'dropdown',  'heading' => '다운로드 버튼 표시',  'value' => [ '표시' => 'yes', '숨김' => 'no' ] ],
 			],
 		] );

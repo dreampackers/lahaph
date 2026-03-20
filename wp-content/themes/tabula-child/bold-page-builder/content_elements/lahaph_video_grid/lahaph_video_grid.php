@@ -58,28 +58,25 @@ class lahaph_video_grid extends BT_BB_Element {
 			<?php while ( $query->have_posts() ) : $query->the_post(); ?>
 				<?php
 				$summary  = get_post_meta( get_the_ID(), 'lahaph_summary', true );
-				$yt_url   = get_post_meta( get_the_ID(), 'lahaph_youtube_url', true );
 				$terms    = get_the_terms( get_the_ID(), 'content_category' );
 				$cat_name = ( $terms && ! is_wp_error( $terms ) ) ? $terms[0]->name : '';
 				?>
 				<article class="lahaph-bb-video-card">
 					<a href="<?php the_permalink(); ?>" class="lahaph-bb-video-card__link">
-						<?php if ( has_post_thumbnail() ) : ?>
-							<div class="lahaph-bb-video-card__thumb">
+						<div class="lahaph-bb-video-card__thumb">
+							<?php if ( has_post_thumbnail() ) : ?>
 								<?php the_post_thumbnail( 'medium_large' ); ?>
-								<?php if ( 'yes' === $a['show_play_icon'] && $yt_url ) : ?>
-									<span class="lahaph-bb-video-card__play">▶</span>
-								<?php endif; ?>
-								<?php if ( 'yes' === $a['show_category_badge'] && $cat_name ) : ?>
-									<span class="lahaph-bb-badge lahaph-bb-badge--dark"><?php echo esc_html( $cat_name ); ?></span>
-								<?php endif; ?>
-							</div>
-						<?php endif; ?>
-						<div class="lahaph-bb-video-card__body">
-							<h3 class="lahaph-bb-video-card__title"><?php the_title(); ?></h3>
-							<?php if ( 'yes' === $a['show_summary'] && $summary ) : ?>
-								<p class="lahaph-bb-video-card__summary"><?php echo esc_html( wp_trim_words( $summary, 18 ) ); ?></p>
 							<?php endif; ?>
+							<div class="lahaph-bb-video-card__overlay">
+								<?php if ( 'yes' === $a['show_category_badge'] && $cat_name ) : ?>
+									<span class="lahaph-bb-video-card__category"><?php echo esc_html( $cat_name ); ?></span>
+								<?php endif; ?>
+								<h3 class="lahaph-bb-video-card__title"><?php the_title(); ?></h3>
+								<?php if ( 'yes' === $a['show_summary'] && $summary ) : ?>
+									<p class="lahaph-bb-video-card__summary"><?php echo esc_html( wp_trim_words( $summary, 18 ) ); ?></p>
+								<?php endif; ?>
+								<span class="lahaph-bb-video-card__cta">VIEW MORE →</span>
+							</div>
 						</div>
 					</a>
 				</article>

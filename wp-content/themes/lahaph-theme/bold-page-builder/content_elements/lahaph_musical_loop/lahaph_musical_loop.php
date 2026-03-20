@@ -65,20 +65,19 @@ class lahaph_musical_loop extends BT_BB_Element {
 				?>
 				<article class="lahaph-bb-musical-card">
 					<a href="<?php the_permalink(); ?>" class="lahaph-bb-musical-card__link">
-						<?php if ( has_post_thumbnail() ) : ?>
-							<div class="lahaph-bb-musical-card__thumb">
+						<div class="lahaph-bb-musical-card__thumb">
+							<?php if ( has_post_thumbnail() ) : ?>
 								<?php the_post_thumbnail( 'medium_large' ); ?>
-								<?php if ( 'yes' === $a['show_year'] && $year ) : ?>
-									<span class="lahaph-bb-badge lahaph-bb-badge--green"><?php echo esc_html( $year ); ?></span>
-								<?php endif; ?>
-								<div class="lahaph-bb-musical-card__overlay"><span>공연 보기 →</span></div>
-							</div>
-						<?php endif; ?>
-						<div class="lahaph-bb-musical-card__body">
-							<<?php echo esc_attr( $tag ); ?> class="lahaph-bb-musical-card__title"><?php the_title(); ?></<?php echo esc_attr( $tag ); ?>>
-							<?php if ( 'yes' === $a['show_intro'] && $intro ) : ?>
-								<p class="lahaph-bb-musical-card__intro"><?php echo esc_html( wp_trim_words( $intro, 20 ) ); ?></p>
 							<?php endif; ?>
+							<div class="lahaph-bb-musical-card__overlay">
+								<?php if ( 'yes' === $a['show_year'] && $year ) : ?>
+									<span class="lahaph-bb-musical-card__year"><?php echo esc_html( $year ); ?></span>
+								<?php endif; ?>
+								<<?php echo esc_attr( $tag ); ?> class="lahaph-bb-musical-card__title"><?php the_title(); ?></<?php echo esc_attr( $tag ); ?>>
+								<?php if ( 'yes' === $a['show_intro'] && $intro ) : ?>
+									<p class="lahaph-bb-musical-card__intro"><?php echo esc_html( wp_trim_words( $intro, 20 ) ); ?></p>
+								<?php endif; ?>
+							</div>
 						</div>
 					</a>
 				</article>

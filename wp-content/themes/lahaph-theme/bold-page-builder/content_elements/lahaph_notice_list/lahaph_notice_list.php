@@ -94,21 +94,41 @@ class lahaph_notice_list extends BT_BB_Element {
 					$status   = get_post_meta( get_the_ID(), 'lahaph_notice_status', true );
 					$evt_date = get_post_meta( get_the_ID(), 'lahaph_event_date', true );
 					$color    = $status_colors[ $status ] ?? 'gray';
+					// 날짜 파싱 (YYYY-MM-DD 또는 YYYY.MM.DD 형식)
+					$date_obj   = $evt_date ? date_create( str_replace( '.', '-', $evt_date ) ) : false;
+					$month_abbr = $date_obj ? strtoupper( date_format( $date_obj, 'M' ) ) : '';
+					$day        = $date_obj ? date_format( $date_obj, 'j' ) : '';
 					?>
 					<article class="lahaph-bb-notice-card">
 						<a href="<?php the_permalink(); ?>" class="lahaph-bb-notice-card__link">
-							<div class="lahaph-bb-notice-card__meta">
-								<?php if ( 'yes' === $a['show_status'] && $status ) : ?>
-									<span class="lahaph-bb-badge lahaph-bb-badge--<?php echo esc_attr( $color ); ?>"><?php echo esc_html( $status ); ?></span>
-								<?php endif; ?>
-								<?php if ( 'yes' === $a['show_date'] && $evt_date ) : ?>
-									<time class="lahaph-bb-notice-card__date"><?php echo esc_html( $evt_date ); ?></time>
-								<?php endif; ?>
-							</div>
-							<h3 class="lahaph-bb-notice-card__title"><?php the_title(); ?></h3>
-							<?php if ( $summary ) : ?>
-								<p class="lahaph-bb-notice-card__summary"><?php echo esc_html( $summary ); ?></p>
+							<?php if ( has_post_thumbnail() ) : ?>
+								<div class="lahaph-bb-notice-card__thumb">
+									<?php the_post_thumbnail( 'medium_large' ); ?>
+									<?php if ( 'yes' === $a['show_status'] && $status ) : ?>
+										<span class="lahaph-bb-badge lahaph-bb-badge--<?php echo esc_attr( $color ); ?>"><?php echo esc_html( $status ); ?></span>
+									<?php endif; ?>
+								</div>
 							<?php endif; ?>
+							<div class="lahaph-bb-notice-card__body">
+								<div class="lahaph-bb-notice-card__row">
+									<?php if ( 'yes' === $a['show_date'] && $date_obj ) : ?>
+										<div class="lahaph-bb-notice-card__date-block">
+											<span class="lahaph-bb-notice-card__month"><?php echo esc_html( $month_abbr ); ?></span>
+											<span class="lahaph-bb-notice-card__day"><?php echo esc_html( $day ); ?></span>
+										</div>
+										<div class="lahaph-bb-notice-card__sep"></div>
+									<?php elseif ( 'yes' === $a['show_status'] && $status && ! has_post_thumbnail() ) : ?>
+										<span class="lahaph-bb-badge lahaph-bb-badge--<?php echo esc_attr( $color ); ?>"><?php echo esc_html( $status ); ?></span>
+									<?php endif; ?>
+									<div class="lahaph-bb-notice-card__content">
+										<h3 class="lahaph-bb-notice-card__title"><?php the_title(); ?></h3>
+										<?php if ( $summary ) : ?>
+											<p class="lahaph-bb-notice-card__summary"><?php echo esc_html( wp_trim_words( $summary, 18 ) ); ?></p>
+										<?php endif; ?>
+										<span class="lahaph-bb-notice-card__cta">APPLY NOW →</span>
+									</div>
+								</div>
+							</div>
 						</a>
 					</article>
 				<?php endwhile; ?>

@@ -19,8 +19,8 @@
 	--lbb-radius-soft:  var(--post-pf-soft-radius, 5px);
 	--lbb-radius-hard:  var(--post-pf-hard-radius, 20px);
 	--lbb-gap:          var(--post-pf-grid-gap-normal, 1em);
-	--lbb-shadow:       0 2px 1em rgba(0, 0, 0, .1);
-	--lbb-shadow-hover: 0 4px 2em rgba(0, 0, 0, .18);
+	--lbb-shadow:       0 2px 1.2em rgba(0, 0, 0, .12);
+	--lbb-shadow-hover: 0 6px 2.5em rgba(0, 0, 0, .2);
 	--lbb-transition:   270ms ease;
 	--lbb-border:       rgba(0, 0, 0, .08);
 	--lbb-muted:        rgba(0, 0, 0, .45);
@@ -64,13 +64,13 @@
 	text-decoration: none;
 }
 
-.lahaph-bb-badge--green { background: var(--lbb-accent); color: var(--lbb-light); }
-.lahaph-bb-badge--navy  { background: var(--lbb-primary); color: var(--lbb-light); }
+.lahaph-bb-badge--green { background: var(--lbb-accent); color: #fff; }
+.lahaph-bb-badge--navy  { background: var(--lbb-primary); color: #fff; }
 .lahaph-bb-badge--gray  { background: rgba(0,0,0,.12); color: rgba(0,0,0,.6); }
-.lahaph-bb-badge--dark  { background: rgba(0,0,0,.55); color: var(--lbb-light); }
+.lahaph-bb-badge--dark  { background: rgba(0,0,0,.55); color: #fff; }
 
 /* =============================================================
-   공통 버튼 — bt_bb_button outline 스타일 참조
+   공통 버튼
    ============================================================= */
 .lahaph-bb-btn {
 	display: inline-block;
@@ -90,7 +90,24 @@
 }
 .lahaph-bb-btn--outline:hover {
 	background: var(--lbb-primary);
-	color: var(--lbb-light);
+	color: #fff;
+}
+
+/* "VIEW MORE →" / "APPLY NOW →" 링크 공통 */
+.lahaph-bb-cta-link {
+	display: inline-flex;
+	align-items: center;
+	gap: .3em;
+	font-size: .8125em;
+	font-weight: 700;
+	color: var(--lbb-accent);
+	text-decoration: none;
+	box-shadow: none;
+	transition: gap var(--lbb-transition), color var(--lbb-transition);
+}
+.lahaph-bb-cta-link:hover {
+	gap: .55em;
+	color: var(--lbb-primary);
 }
 
 /* 유틸리티 */
@@ -101,89 +118,100 @@
 
 /* =============================================================
    뮤지컬 공연 카드
-   — bt_bb_css_post_grid zoom 호버 스타일 참조
+   — 풀 블리드 이미지 + 하단 그라디언트 오버레이 (항상 표시)
+   — 오버레이 위에 연도·제목·소개글 (흰색 텍스트)
+   — 왼쪽 하단 액센트 원형 데코
    ============================================================= */
 .lahaph-bb-musical-card {
+	position: relative;
 	border-radius: var(--lbb-radius-soft);
 	overflow: hidden;
-	background: var(--lbb-light);
+	background: #111;
 	box-shadow: var(--lbb-shadow);
 	transition: transform var(--lbb-transition), box-shadow var(--lbb-transition);
 }
 .lahaph-bb-musical-card:hover {
-	transform: translateY(-4px);
+	transform: translateY(-5px);
 	box-shadow: var(--lbb-shadow-hover);
 }
 .lahaph-bb-musical-card__link {
-	text-decoration: none;
-	color: inherit;
 	display: block;
+	text-decoration: none;
+	color: #fff;
 	box-shadow: none;
 }
-.lahaph-bb-musical-card__link:hover { color: inherit; }
+.lahaph-bb-musical-card__link:hover { color: #fff; }
 
 .lahaph-bb-musical-card__thumb {
 	position: relative;
 	aspect-ratio: 3 / 4;
 	overflow: hidden;
-	background: rgba(0, 0, 0, .3);
 }
 .lahaph-bb-musical-card__thumb img {
 	display: block;
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	transition: transform 400ms ease;
-	transform-origin: bottom;
+	transition: transform 500ms ease;
 }
 .lahaph-bb-musical-card:hover .lahaph-bb-musical-card__thumb img {
-	transform: scale(1.05);
+	transform: scale(1.07);
 }
-.lahaph-bb-musical-card__thumb .lahaph-bb-badge {
-	position: absolute;
-	top: .75em;
-	left: .75em;
-	z-index: 2;
-}
+
+/* 항상 보이는 하단 그라디언트 오버레이 */
 .lahaph-bb-musical-card__overlay {
 	position: absolute;
 	inset: 0;
-	background: rgba(0, 0, 0, 0);
-	transition: background 400ms ease;
+	background: linear-gradient(
+		to top,
+		rgba(0, 0, 0, .88) 0%,
+		rgba(0, 0, 0, .45) 45%,
+		transparent 80%
+	);
 	display: flex;
-	align-items: flex-end;
-	padding: 1em;
-	color: var(--lbb-light);
-	font-weight: 700;
-	font-size: .875em;
-	z-index: 1;
+	flex-direction: column;
+	justify-content: flex-end;
+	padding: 1.75em 1.25em 1.75em;
 }
-.lahaph-bb-musical-card__overlay::after {
+
+/* 왼쪽 하단 액센트 원형 데코 */
+.lahaph-bb-musical-card__overlay::before {
 	content: '';
 	position: absolute;
-	inset: 0;
-	background: rgba(0, 0, 0, 0);
-	transition: 400ms ease;
+	bottom: -2.5em;
+	left: -2.5em;
+	width: 7.5em;
+	height: 7.5em;
+	border-radius: 50%;
+	background: var(--lbb-accent);
+	opacity: 0.45;
 	pointer-events: none;
 }
-.lahaph-bb-musical-card:hover .lahaph-bb-musical-card__overlay::after {
-	background: rgba(0, 0, 0, .45);
-}
-.lahaph-bb-musical-card__overlay span { position: relative; z-index: 1; opacity: 0; transition: 300ms ease; }
-.lahaph-bb-musical-card:hover .lahaph-bb-musical-card__overlay span { opacity: 1; }
 
-.lahaph-bb-musical-card__body {
-	padding: 1em 1.1em;
+.lahaph-bb-musical-card__year {
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+	font-size: .75em;
+	font-weight: 700;
+	color: var(--lbb-accent);
+	margin-bottom: .3em;
+	letter-spacing: .04em;
 }
 .lahaph-bb-musical-card__title {
-	font-size: 1em;
-	font-weight: 700;
-	color: var(--lbb-primary);
-	margin: 0 0 .4em;
+	position: relative;
+	z-index: 1;
+	font-size: 1.05em;
+	font-weight: 800;
+	color: #fff;
+	margin: 0 0 .45em;
+	line-height: 1.3;
 }
 .lahaph-bb-musical-card__intro {
-	font-size: .8125em;
-	color: var(--lbb-muted);
+	position: relative;
+	z-index: 1;
+	font-size: .8em;
+	color: rgba(255, 255, 255, .78);
 	margin: 0;
 	line-height: 1.65;
 }
@@ -191,96 +219,257 @@
 
 /* =============================================================
    멤버 카드
+   — 세로형: 인물 사진 상단 + 흰색 정보 영역 하단 (중앙 정렬)
    ============================================================= */
-.lahaph-bb-member-card--card {
+.lahaph-bb-member-card {
 	background: var(--lbb-light);
 	border-radius: var(--lbb-radius-soft);
-	padding: 1.5em 1.25em;
-	border-top: 3px solid var(--lbb-accent);
+	overflow: hidden;
 	box-shadow: var(--lbb-shadow);
-	transition: box-shadow var(--lbb-transition);
+	transition: transform var(--lbb-transition), box-shadow var(--lbb-transition);
 }
-.lahaph-bb-member-card--card:hover { box-shadow: var(--lbb-shadow-hover); }
-
-.lahaph-bb-member-card--minimal {
-	padding: 1em 0;
-	border-bottom: 1px solid var(--lbb-border);
+.lahaph-bb-member-card:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--lbb-shadow-hover);
 }
 
-.lahaph-bb-member-card__photo img {
-	width: 80px;
-	height: 80px;
-	border-radius: 50%;
+/* 카드형 */
+.lahaph-bb-member-card--card .lahaph-bb-member-card__photo {
+	aspect-ratio: 1 / 1;
+	overflow: hidden;
+	background: var(--lbb-bg);
+}
+.lahaph-bb-member-card--card .lahaph-bb-member-card__photo img {
+	display: block;
+	width: 100%;
+	height: 100%;
 	object-fit: cover;
-	margin-bottom: .75em;
+	object-position: top center;
+	transition: transform 400ms ease;
+}
+.lahaph-bb-member-card:hover .lahaph-bb-member-card__photo img {
+	transform: scale(1.04);
+}
+.lahaph-bb-member-card--card .lahaph-bb-member-card__body {
+	padding: 1.25em 1.1em 1.5em;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: .3em;
+}
+
+/* 미니멀형 */
+.lahaph-bb-member-card--minimal {
+	border-radius: 0;
+	box-shadow: none;
+	background: transparent;
+	border-bottom: 1px solid var(--lbb-border);
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	padding: 1em 0;
+}
+.lahaph-bb-member-card--minimal:hover {
+	transform: none;
+	box-shadow: none;
+}
+.lahaph-bb-member-card--minimal .lahaph-bb-member-card__photo {
+	width: 3.5em;
+	height: 3.5em;
+	border-radius: 50%;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+.lahaph-bb-member-card--minimal .lahaph-bb-member-card__photo img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 50%;
+}
+.lahaph-bb-member-card--minimal .lahaph-bb-member-card__body {
+	display: flex;
+	flex-direction: column;
+	gap: .15em;
+	text-align: left;
+}
+
+/* 공통 텍스트 요소 */
+.lahaph-bb-member-card__role {
+	font-size: .8125em;
+	color: var(--lbb-muted);
+	font-weight: 500;
+}
+.lahaph-bb-member-card__name {
+	font-size: 1.2em;
+	font-weight: 800;
+	color: var(--lbb-primary);
 	display: block;
 }
-.lahaph-bb-member-card__info { display: flex; flex-direction: column; gap: .25em; }
-.lahaph-bb-member-card__name { font-size: 1em; font-weight: 700; color: var(--lbb-primary); }
-.lahaph-bb-member-card__role { font-size: .875em; font-weight: 600; color: var(--lbb-accent); }
-.lahaph-bb-member-card__affiliation { font-size: .8125em; color: var(--lbb-muted); }
-.lahaph-bb-member-card__summary { font-size: .8125em; color: var(--lbb-muted); margin: .25em 0 0; line-height: 1.65; }
+.lahaph-bb-member-card__affiliation {
+	font-size: .8125em;
+	color: var(--lbb-muted);
+}
+.lahaph-bb-member-card__summary {
+	font-size: .875em;
+	color: var(--lbb-muted);
+	line-height: 1.65;
+	margin: .2em 0 0;
+}
 
 
 /* =============================================================
    아티스트 카드
+   — 멤버 카드와 동일 레이아웃 (세로형 인물사진 + 하단 텍스트)
    ============================================================= */
 .lahaph-bb-artist-card {
 	background: var(--lbb-light);
 	border-radius: var(--lbb-radius-soft);
-	padding: 2em 1.25em;
-	text-align: center;
+	overflow: hidden;
 	box-shadow: var(--lbb-shadow);
-	transition: box-shadow var(--lbb-transition), transform var(--lbb-transition);
+	transition: transform var(--lbb-transition), box-shadow var(--lbb-transition);
 }
 .lahaph-bb-artist-card:hover {
-	box-shadow: var(--lbb-shadow-hover);
 	transform: translateY(-4px);
+	box-shadow: var(--lbb-shadow-hover);
 }
 .lahaph-bb-artist-card__link,
 .lahaph-bb-artist-card__inner {
+	display: block;
 	text-decoration: none;
 	color: inherit;
-	display: block;
 	box-shadow: none;
 }
-.lahaph-bb-artist-card__photo img {
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
-	object-fit: cover;
-	margin: 0 auto .875em;
-	display: block;
-	border: 3px solid var(--lbb-accent);
+.lahaph-bb-artist-card__link:hover { color: inherit; }
+
+.lahaph-bb-artist-card__photo {
+	aspect-ratio: 1 / 1;
+	overflow: hidden;
+	background: var(--lbb-bg);
 }
-.lahaph-bb-artist-card__info { display: flex; flex-direction: column; gap: .25em; align-items: center; }
-.lahaph-bb-artist-card__name { font-size: 1em; font-weight: 700; color: var(--lbb-primary); }
-.lahaph-bb-artist-card__role { font-size: .875em; font-weight: 600; color: var(--lbb-accent); }
-.lahaph-bb-artist-card__summary { font-size: .8125em; color: var(--lbb-muted); margin: .375em 0 0; line-height: 1.65; }
+.lahaph-bb-artist-card__photo img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: top center;
+	transition: transform 400ms ease;
+}
+.lahaph-bb-artist-card:hover .lahaph-bb-artist-card__photo img {
+	transform: scale(1.04);
+}
+.lahaph-bb-artist-card__body {
+	padding: 1.25em 1.1em 1.5em;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: .3em;
+}
+.lahaph-bb-artist-card__role {
+	font-size: .8125em;
+	color: var(--lbb-muted);
+	font-weight: 500;
+}
+.lahaph-bb-artist-card__name {
+	font-size: 1.2em;
+	font-weight: 800;
+	color: var(--lbb-primary);
+	display: block;
+}
+.lahaph-bb-artist-card__summary {
+	font-size: .875em;
+	color: var(--lbb-muted);
+	margin: .2em 0 0;
+	line-height: 1.65;
+}
 
 
 /* =============================================================
    아카데미 과정 카드
+   — 이미지 상단 (카테고리·제목 오버레이)
+   — 바디: 왼쪽 초록 리본 + 설명 + 수업시간 + VIEW MORE
    ============================================================= */
 .lahaph-bb-academy-card {
 	background: var(--lbb-light);
 	border-radius: var(--lbb-radius-soft);
-	padding: 1.5em 1.25em;
-	border-left: 3px solid var(--lbb-accent);
+	overflow: hidden;
 	box-shadow: var(--lbb-shadow);
-	transition: box-shadow var(--lbb-transition), transform var(--lbb-transition);
+	transition: transform var(--lbb-transition), box-shadow var(--lbb-transition);
 	display: flex;
 	flex-direction: column;
-	gap: .5em;
 }
 .lahaph-bb-academy-card:hover {
-	box-shadow: var(--lbb-shadow-hover);
 	transform: translateY(-4px);
+	box-shadow: var(--lbb-shadow-hover);
 }
-.lahaph-bb-academy-card__title { font-size: 1em; font-weight: 700; color: var(--lbb-primary); margin: .25em 0 0; }
-.lahaph-bb-academy-card__summary { font-size: .875em; color: var(--lbb-muted); line-height: 1.7; margin: 0; }
-.lahaph-bb-academy-card__times { display: flex; flex-direction: column; gap: .125em; }
-.lahaph-bb-academy-card__time-item { font-size: .8125em; color: var(--lbb-muted); }
+
+.lahaph-bb-academy-card__thumb {
+	position: relative;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	background: var(--lbb-bg);
+}
+.lahaph-bb-academy-card__thumb img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 400ms ease;
+}
+.lahaph-bb-academy-card:hover .lahaph-bb-academy-card__thumb img {
+	transform: scale(1.05);
+}
+/* 이미지 위 카테고리+제목 오버레이 */
+.lahaph-bb-academy-card__thumb-overlay {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: linear-gradient(transparent, rgba(0,0,0,.65));
+	padding: 1.5em .9em .75em;
+}
+.lahaph-bb-academy-card__thumb-title {
+	font-size: .9em;
+	font-weight: 700;
+	color: #fff;
+	margin: .3em 0 0;
+	line-height: 1.3;
+}
+
+/* 바디: 왼쪽 초록 리본 */
+.lahaph-bb-academy-card__body {
+	flex: 1;
+	padding: 1.1em 1.1em 1.1em 1.4em;
+	border-left: 4px solid var(--lbb-accent);
+	display: flex;
+	flex-direction: column;
+	gap: .45em;
+}
+/* 이미지 없을 때 카드 상단에 카테고리+제목 */
+.lahaph-bb-academy-card__body .lahaph-bb-academy-card__title {
+	font-size: 1em;
+	font-weight: 700;
+	color: var(--lbb-primary);
+	margin: 0;
+}
+.lahaph-bb-academy-card__summary {
+	font-size: .875em;
+	color: var(--lbb-muted);
+	line-height: 1.7;
+	margin: 0;
+	flex: 1;
+}
+.lahaph-bb-academy-card__times {
+	display: flex;
+	flex-direction: column;
+	gap: .15em;
+}
+.lahaph-bb-academy-card__time-item {
+	font-size: .8125em;
+	color: var(--lbb-muted);
+}
 
 /* 목록형 */
 .lahaph-bb-academy-list { list-style: none; margin: 0; padding: 0; }
@@ -300,87 +489,97 @@
 
 /* =============================================================
    영상 콘텐츠 카드
-   — bt_bb_css_post_grid zoom + arrow 호버 스타일 참조
+   — 풀 블리드 배경 이미지 + 균일한 어두운 오버레이 (항상 표시)
+   — 카테고리 → 제목 → 설명 → VIEW MORE → 흰색 텍스트
    ============================================================= */
 .lahaph-bb-video-card {
 	border-radius: var(--lbb-radius-soft);
 	overflow: hidden;
-	background: var(--lbb-light);
+	background: #111;
 	box-shadow: var(--lbb-shadow);
 	transition: transform var(--lbb-transition), box-shadow var(--lbb-transition);
 }
 .lahaph-bb-video-card:hover {
-	transform: translateY(-4px);
+	transform: translateY(-5px);
 	box-shadow: var(--lbb-shadow-hover);
 }
 .lahaph-bb-video-card__link {
-	text-decoration: none;
-	color: inherit;
 	display: block;
+	text-decoration: none;
+	color: #fff;
 	box-shadow: none;
 }
-.lahaph-bb-video-card__link:hover { color: inherit; }
+.lahaph-bb-video-card__link:hover { color: #fff; }
 
 .lahaph-bb-video-card__thumb {
 	position: relative;
-	aspect-ratio: 16 / 9;
+	aspect-ratio: 3 / 4;
 	overflow: hidden;
-	background: rgba(0, 0, 0, .3);
 }
 .lahaph-bb-video-card__thumb img {
 	display: block;
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	transition: transform 400ms ease;
-	transform-origin: bottom;
+	transition: transform 500ms ease;
 }
-.lahaph-bb-video-card:hover .lahaph-bb-video-card__thumb img { transform: scale(1.05); }
+.lahaph-bb-video-card:hover .lahaph-bb-video-card__thumb img {
+	transform: scale(1.06);
+}
 
-/* 재생 아이콘 — BBP arrow 호버 참조 */
-.lahaph-bb-video-card__play {
+/* 균일한 반투명 어두운 오버레이 (항상 표시) */
+.lahaph-bb-video-card__overlay {
 	position: absolute;
 	inset: 0;
+	background: rgba(0, 0, 0, .52);
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 2.5em;
-	color: var(--lbb-light);
-	z-index: 3;
-	transform: translateY(-1em);
-	opacity: 0;
-	transition: transform 400ms ease, opacity 400ms ease;
+	flex-direction: column;
+	justify-content: flex-end;
+	padding: 1.75em 1.25em;
+	transition: background var(--lbb-transition);
 }
-.lahaph-bb-video-card:hover .lahaph-bb-video-card__play {
-	transform: translateY(0);
-	transition-delay: 100ms;
-	opacity: 1;
+.lahaph-bb-video-card:hover .lahaph-bb-video-card__overlay {
+	background: rgba(0, 0, 0, .62);
 }
-/* 오버레이 어두운 배경 */
-.lahaph-bb-video-card__thumb::after {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background: rgba(0, 0, 0, 0);
-	transition: 400ms ease;
-	z-index: 2;
-	pointer-events: none;
-}
-.lahaph-bb-video-card:hover .lahaph-bb-video-card__thumb::after { background: rgba(0, 0, 0, .45); }
 
-.lahaph-bb-video-card__thumb .lahaph-bb-badge {
-	position: absolute;
-	top: .625em;
-	right: .625em;
-	z-index: 4;
+.lahaph-bb-video-card__category {
+	display: block;
+	font-size: .75em;
+	font-weight: 700;
+	color: rgba(255,255,255,.7);
+	text-transform: uppercase;
+	letter-spacing: .06em;
+	margin-bottom: .4em;
 }
-.lahaph-bb-video-card__body { padding: 1em 1.1em; }
-.lahaph-bb-video-card__title { font-size: .9375em; font-weight: 700; color: var(--lbb-primary); margin: 0 0 .375em; }
-.lahaph-bb-video-card__summary { font-size: .8125em; color: var(--lbb-muted); margin: 0; line-height: 1.65; }
+.lahaph-bb-video-card__title {
+	font-size: 1.1em;
+	font-weight: 800;
+	color: #fff;
+	margin: 0 0 .5em;
+	line-height: 1.3;
+}
+.lahaph-bb-video-card__summary {
+	font-size: .83em;
+	color: rgba(255,255,255,.78);
+	margin: 0 0 .9em;
+	line-height: 1.65;
+}
+.lahaph-bb-video-card__cta {
+	display: inline-flex;
+	align-items: center;
+	gap: .3em;
+	font-size: .8125em;
+	font-weight: 700;
+	color: var(--lbb-accent);
+	transition: gap var(--lbb-transition);
+}
+.lahaph-bb-video-card:hover .lahaph-bb-video-card__cta { gap: .55em; }
 
 
 /* =============================================================
-   공연 알림
+   공연 알림 카드
+   — 이미지 상단 (16:9)
+   — 날짜 블록: 월(영문 대문자) + 일(대형)  세로 구분선  제목+설명+APPLY NOW
    ============================================================= */
 /* 목록형 */
 .lahaph-bb-notice-list { list-style: none; margin: 0; padding: 0; }
@@ -407,38 +606,134 @@
 .lahaph-bb-notice-list__summary { font-size: .875em; color: var(--lbb-muted); margin: 0; }
 
 /* 카드형 */
-.lahaph-bb-notice-cards { display: flex; flex-direction: column; gap: 1em; }
+.lahaph-bb-notice-cards { display: flex; flex-direction: column; gap: 1.5em; }
+
 .lahaph-bb-notice-card {
 	background: var(--lbb-light);
 	border-radius: var(--lbb-radius-soft);
-	padding: 1.25em 1.5em;
-	border-left: 3px solid var(--lbb-accent);
+	overflow: hidden;
 	box-shadow: var(--lbb-shadow);
-	transition: box-shadow var(--lbb-transition);
+	transition: transform var(--lbb-transition), box-shadow var(--lbb-transition);
 }
-.lahaph-bb-notice-card:hover { box-shadow: var(--lbb-shadow-hover); }
+.lahaph-bb-notice-card:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--lbb-shadow-hover);
+}
 .lahaph-bb-notice-card__link {
+	display: block;
 	text-decoration: none;
 	color: inherit;
-	display: block;
 	box-shadow: none;
 }
 .lahaph-bb-notice-card__link:hover { color: inherit; }
-.lahaph-bb-notice-card__meta { display: flex; align-items: center; gap: .625em; margin-bottom: .5em; }
-.lahaph-bb-notice-card__date { font-size: .8125em; color: var(--lbb-muted); }
+
+/* 이미지 썸네일 */
+.lahaph-bb-notice-card__thumb {
+	position: relative;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	background: var(--lbb-bg);
+}
+.lahaph-bb-notice-card__thumb img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 400ms ease;
+}
+.lahaph-bb-notice-card:hover .lahaph-bb-notice-card__thumb img {
+	transform: scale(1.05);
+}
+.lahaph-bb-notice-card__thumb .lahaph-bb-badge {
+	position: absolute;
+	top: .75em;
+	left: .75em;
+	z-index: 2;
+}
+
+/* 날짜 블록 + 내용 영역 */
+.lahaph-bb-notice-card__body {
+	padding: 1.25em 1.25em 1.4em;
+}
+.lahaph-bb-notice-card__row {
+	display: flex;
+	align-items: flex-start;
+	gap: 1em;
+}
+
+/* 날짜 블록: 월/일 */
+.lahaph-bb-notice-card__date-block {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-shrink: 0;
+	min-width: 2.5em;
+}
+.lahaph-bb-notice-card__month {
+	display: block;
+	font-size: .7em;
+	font-weight: 700;
+	color: var(--lbb-accent);
+	text-transform: uppercase;
+	letter-spacing: .06em;
+	line-height: 1;
+}
+.lahaph-bb-notice-card__day {
+	display: block;
+	font-size: 2em;
+	font-weight: 900;
+	color: var(--lbb-accent);
+	line-height: 1;
+}
+
+/* 세로 구분선 */
+.lahaph-bb-notice-card__sep {
+	width: 1px;
+	background: var(--lbb-border);
+	align-self: stretch;
+	flex-shrink: 0;
+}
+
+/* 제목 + 설명 + CTA */
+.lahaph-bb-notice-card__content {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: .35em;
+}
 .lahaph-bb-notice-card__title {
-	font-size: 1em;
+	font-size: .9375em;
 	font-weight: 700;
 	color: var(--lbb-primary);
-	margin: 0 0 .375em;
+	margin: 0;
 	transition: color var(--lbb-transition);
 }
-.lahaph-bb-notice-card__link:hover .lahaph-bb-notice-card__title { color: var(--lbb-accent); }
-.lahaph-bb-notice-card__summary { font-size: .875em; color: var(--lbb-muted); margin: 0; }
+.lahaph-bb-notice-card__link:hover .lahaph-bb-notice-card__title {
+	color: var(--lbb-accent);
+}
+.lahaph-bb-notice-card__summary {
+	font-size: .8125em;
+	color: var(--lbb-muted);
+	margin: 0;
+	line-height: 1.6;
+}
+.lahaph-bb-notice-card__cta {
+	display: inline-flex;
+	align-items: center;
+	gap: .3em;
+	font-size: .8125em;
+	font-weight: 700;
+	color: var(--lbb-accent);
+	margin-top: .35em;
+	transition: gap var(--lbb-transition);
+}
+.lahaph-bb-notice-card:hover .lahaph-bb-notice-card__cta { gap: .55em; }
 
 
 /* =============================================================
-   공시 서류 테이블
+   공시 서류
+   — 테이블 레이아웃 (기본)
+   — 카드 레이아웃: 공연 알림과 동일 구조 (연도 블록)
    ============================================================= */
 .lahaph-bb-disclosure-wrap { overflow-x: auto; }
 .lahaph-bb-table {
@@ -468,6 +763,103 @@
 	transition: color var(--lbb-transition);
 }
 .lahaph-bb-table td a:hover { color: var(--lbb-accent); }
+
+/* 카드 레이아웃 (공연 알림과 동일 구조) */
+.lahaph-bb-disclosure-cards { display: flex; flex-direction: column; gap: 1.5em; }
+
+.lahaph-bb-disclosure-card {
+	background: var(--lbb-light);
+	border-radius: var(--lbb-radius-soft);
+	overflow: hidden;
+	box-shadow: var(--lbb-shadow);
+	transition: transform var(--lbb-transition), box-shadow var(--lbb-transition);
+}
+.lahaph-bb-disclosure-card:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--lbb-shadow-hover);
+}
+.lahaph-bb-disclosure-card__link {
+	display: block;
+	text-decoration: none;
+	color: inherit;
+	box-shadow: none;
+}
+.lahaph-bb-disclosure-card__link:hover { color: inherit; }
+
+.lahaph-bb-disclosure-card__thumb {
+	position: relative;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	background: var(--lbb-bg);
+}
+.lahaph-bb-disclosure-card__thumb img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 400ms ease;
+}
+.lahaph-bb-disclosure-card:hover .lahaph-bb-disclosure-card__thumb img {
+	transform: scale(1.05);
+}
+
+.lahaph-bb-disclosure-card__body {
+	padding: 1.25em 1.25em 1.4em;
+}
+.lahaph-bb-disclosure-card__row {
+	display: flex;
+	align-items: flex-start;
+	gap: 1em;
+}
+.lahaph-bb-disclosure-card__year-block {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-shrink: 0;
+	min-width: 2.5em;
+}
+.lahaph-bb-disclosure-card__year-label {
+	display: block;
+	font-size: .7em;
+	font-weight: 700;
+	color: var(--lbb-accent);
+	text-transform: uppercase;
+	letter-spacing: .06em;
+	line-height: 1;
+}
+.lahaph-bb-disclosure-card__year {
+	display: block;
+	font-size: 1.75em;
+	font-weight: 900;
+	color: var(--lbb-accent);
+	line-height: 1.1;
+}
+.lahaph-bb-disclosure-card__sep {
+	width: 1px;
+	background: var(--lbb-border);
+	align-self: stretch;
+	flex-shrink: 0;
+}
+.lahaph-bb-disclosure-card__content {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: .35em;
+}
+.lahaph-bb-disclosure-card__title {
+	font-size: .9375em;
+	font-weight: 700;
+	color: var(--lbb-primary);
+	margin: 0;
+	transition: color var(--lbb-transition);
+}
+.lahaph-bb-disclosure-card__link:hover .lahaph-bb-disclosure-card__title { color: var(--lbb-accent); }
+.lahaph-bb-disclosure-card__summary {
+	font-size: .8125em;
+	color: var(--lbb-muted);
+	margin: 0;
+	line-height: 1.6;
+}
 
 
 /* =============================================================

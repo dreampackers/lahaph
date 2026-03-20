@@ -97,19 +97,35 @@ class lahaph_academy_courses extends BT_BB_Element {
 					$cat_name   = ( $terms && ! is_wp_error( $terms ) ) ? $terms[0]->name : '';
 					?>
 					<div class="lahaph-bb-academy-card">
-						<?php if ( 'yes' === $a['show_category'] && $cat_name ) : ?>
-							<span class="lahaph-bb-badge lahaph-bb-badge--green"><?php echo esc_html( $cat_name ); ?></span>
-						<?php endif; ?>
-						<h3 class="lahaph-bb-academy-card__title"><?php the_title(); ?></h3>
-						<?php if ( $summary ) : ?>
-							<p class="lahaph-bb-academy-card__summary"><?php echo esc_html( $summary ); ?></p>
-						<?php endif; ?>
-						<?php if ( 'yes' === $a['show_time'] && ( $after_time || $after_work ) ) : ?>
-							<div class="lahaph-bb-academy-card__times">
-								<?php if ( $after_time ) : ?><span class="lahaph-bb-academy-card__time-item">방과 후: <?php echo esc_html( $after_time ); ?></span><?php endif; ?>
-								<?php if ( $after_work ) : ?><span class="lahaph-bb-academy-card__time-item">직장인반: <?php echo esc_html( $after_work ); ?></span><?php endif; ?>
+						<?php if ( has_post_thumbnail() ) : ?>
+							<div class="lahaph-bb-academy-card__thumb">
+								<?php the_post_thumbnail( 'medium_large' ); ?>
+								<?php if ( 'yes' === $a['show_category'] && $cat_name ) : ?>
+									<div class="lahaph-bb-academy-card__thumb-overlay">
+										<span class="lahaph-bb-badge lahaph-bb-badge--green"><?php echo esc_html( $cat_name ); ?></span>
+										<p class="lahaph-bb-academy-card__thumb-title"><?php the_title(); ?></p>
+									</div>
+								<?php endif; ?>
 							</div>
 						<?php endif; ?>
+						<div class="lahaph-bb-academy-card__body">
+							<?php if ( ! has_post_thumbnail() ) : ?>
+								<?php if ( 'yes' === $a['show_category'] && $cat_name ) : ?>
+									<span class="lahaph-bb-badge lahaph-bb-badge--green"><?php echo esc_html( $cat_name ); ?></span>
+								<?php endif; ?>
+								<h3 class="lahaph-bb-academy-card__title"><?php the_title(); ?></h3>
+							<?php endif; ?>
+							<?php if ( $summary ) : ?>
+								<p class="lahaph-bb-academy-card__summary"><?php echo esc_html( $summary ); ?></p>
+							<?php endif; ?>
+							<?php if ( 'yes' === $a['show_time'] && ( $after_time || $after_work ) ) : ?>
+								<div class="lahaph-bb-academy-card__times">
+									<?php if ( $after_time ) : ?><span class="lahaph-bb-academy-card__time-item">방과 후: <?php echo esc_html( $after_time ); ?></span><?php endif; ?>
+									<?php if ( $after_work ) : ?><span class="lahaph-bb-academy-card__time-item">직장인반: <?php echo esc_html( $after_work ); ?></span><?php endif; ?>
+								</div>
+							<?php endif; ?>
+							<a href="<?php the_permalink(); ?>" class="lahaph-bb-cta-link">VIEW MORE →</a>
+						</div>
 					</div>
 				<?php endwhile; ?>
 			</div>
