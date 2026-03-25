@@ -60,6 +60,31 @@ function lahaph_bb_enqueue_styles(): void {
 }
 
 /* ─────────────────────────────────────────────────────────────
+   관리자 — bt_bb_mapping_secondary 스테일 캐시 정리
+   BBP가 DB에 저장한 구버전 엘리먼트 파라미터 정의를 삭제하여
+   PHP에서 정의한 최신 params (link_url 등)가 빌더 UI에 반영되도록 합니다.
+───────────────────────────────────────────────────────────── */
+add_action( 'admin_init', 'lahaph_bb_clear_stale_mapping' );
+
+function lahaph_bb_clear_stale_mapping(): void {
+	$opt = get_option( 'bt_bb_mapping_secondary', [] );
+	if ( ! is_array( $opt ) ) {
+		return;
+	}
+	$our_elements = [ 'lahaph_musical_loop', 'lahaph_member_grid' ];
+	$changed      = false;
+	foreach ( $our_elements as $key ) {
+		if ( isset( $opt[ $key ] ) ) {
+			unset( $opt[ $key ] );
+			$changed = true;
+		}
+	}
+	if ( $changed ) {
+		update_option( 'bt_bb_mapping_secondary', $opt );
+	}
+}
+
+/* ─────────────────────────────────────────────────────────────
    관리자 — 활성화 알림 (BBP 미설치 시 경고)
 ───────────────────────────────────────────────────────────── */
 add_action( 'admin_notices', 'lahaph_bb_admin_notice' );
