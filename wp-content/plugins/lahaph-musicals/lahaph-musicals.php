@@ -25,4 +25,3 @@ require_once LAHAPH_MUSICALS_DIR . 'includes/post-types.php';
 require_once LAHAPH_MUSICALS_DIR . 'includes/taxonomies.php';
 require_once LAHAPH_MUSICALS_DIR . 'includes/meta-fields.php';
 require_once LAHAPH_MUSICALS_DIR . 'includes/admin-columns.php';
-require_once LAHAPH_MUSICALS_DIR . 'includes/meta-boxes.php';

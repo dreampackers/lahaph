@@ -41,10 +41,6 @@ function lahaph_musicals_register_meta(): void {
 		'description' => '노출 순서',
 		'default'     => 0,
 	] );
-	register_post_meta( 'musical', 'lahaph_page_url', $defaults + [
-		'type'        => 'string',
-		'description' => '카드 클릭 시 연결할 커스텀 페이지 URL',
-	] );
 	// TODO: Phase 4 — story_content (에디터 본문으로 처리)
 	// TODO: Phase 4 — purpose (반복 필드: 공연 목적 목록)
 	// TODO: Phase 4 — staff (반복 필드: 스태프 목록)
