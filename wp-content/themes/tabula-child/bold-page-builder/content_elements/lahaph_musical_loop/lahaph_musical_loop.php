@@ -19,6 +19,7 @@ class lahaph_musical_loop extends BT_BB_Element {
 			'show_year'      => 'yes',
 			'show_intro'     => 'yes',
 			'title_tag'      => 'h3',
+			'link_to'        => 'post',  // 'post' | 'custom' | 'none'
 			// base params
 			'el_id'    => '',
 			'el_class' => '',
@@ -46,6 +47,7 @@ class lahaph_musical_loop extends BT_BB_Element {
 		$query   = new WP_Query( $query_args );
 		$columns = max( 2, min( 4, (int) $a['columns'] ) );
 		$tag     = in_array( $a['title_tag'], [ 'h2', 'h3', 'h4' ], true ) ? $a['title_tag'] : 'h3';
+		$link_to = in_array( $a['link_to'], [ 'post', 'custom', 'none' ], true ) ? $a['link_to'] : 'post';
 
 		if ( ! $query->have_posts() ) {
 			return '<p class="lahaph-bb-empty">등록된 뮤지컬 공연이 없습니다.</p>';
@@ -60,11 +62,25 @@ class lahaph_musical_loop extends BT_BB_Element {
 		<div<?php echo $id_attr; ?> class="<?php echo esc_attr( $class_attr ); ?>"<?php echo $style_attr; ?>>
 			<?php while ( $query->have_posts() ) : $query->the_post(); ?>
 				<?php
-				$year  = get_post_meta( get_the_ID(), 'lahaph_year', true );
-				$intro = get_post_meta( get_the_ID(), 'lahaph_intro', true );
+				$year      = get_post_meta( get_the_ID(), 'lahaph_year', true );
+				$intro     = get_post_meta( get_the_ID(), 'lahaph_intro', true );
+				$page_url  = get_post_meta( get_the_ID(), 'lahaph_page_url', true );
+
+				// 링크 URL 결정
+				if ( 'none' === $link_to ) {
+					$card_url = '';
+				} elseif ( 'custom' === $link_to && $page_url ) {
+					$card_url = $page_url;
+				} else {
+					$card_url = get_permalink();
+				}
 				?>
 				<article class="lahaph-bb-musical-card">
-					<a href="<?php the_permalink(); ?>" class="lahaph-bb-musical-card__link">
+					<?php if ( $card_url ) : ?>
+						<a href="<?php echo esc_url( $card_url ); ?>" class="lahaph-bb-musical-card__link">
+					<?php else : ?>
+						<div class="lahaph-bb-musical-card__link">
+					<?php endif; ?>
 						<div class="lahaph-bb-musical-card__thumb">
 							<?php if ( has_post_thumbnail() ) : ?>
 								<?php the_post_thumbnail( 'medium_large' ); ?>
@@ -79,7 +95,7 @@ class lahaph_musical_loop extends BT_BB_Element {
 								<?php endif; ?>
 							</div>
 						</div>
-					</a>
+					<?php echo $card_url ? '</a>' : '</div>'; ?>
 				</article>
 			<?php endwhile; ?>
 		</div>
@@ -96,13 +112,14 @@ class lahaph_musical_loop extends BT_BB_Element {
 			'description' => 'musical CPT를 카드 그리드로 출력합니다.',
 			'icon'        => 'dashicons-tickets-alt',
 			'params'      => [
-				[ 'param_name' => 'columns',        'type' => 'dropdown', 'heading' => '열 수',           'value' => [ '2열' => '2', '3열' => '3', '4열' => '4' ] ],
-				[ 'param_name' => 'posts_per_page',  'type' => 'textfield', 'heading' => '표시 개수',      'value' => '9' ],
-				[ 'param_name' => 'orderby',         'type' => 'dropdown', 'heading' => '정렬 기준',       'value' => [ '표시 순서' => 'display_order', '공연 연도' => 'year', '등록일' => 'date' ] ],
-				[ 'param_name' => 'order',           'type' => 'dropdown', 'heading' => '정렬 방향',       'value' => [ '오름차순' => 'ASC', '내림차순' => 'DESC' ] ],
-				[ 'param_name' => 'show_year',       'type' => 'dropdown', 'heading' => '연도 뱃지 표시',  'value' => [ '표시' => 'yes', '숨김' => 'no' ] ],
-				[ 'param_name' => 'show_intro',      'type' => 'dropdown', 'heading' => '공연 소개 표시',  'value' => [ '표시' => 'yes', '숨김' => 'no' ] ],
-				[ 'param_name' => 'title_tag',       'type' => 'dropdown', 'heading' => '제목 태그',       'value' => [ 'H2' => 'h2', 'H3' => 'h3', 'H4' => 'h4' ] ],
+				[ 'param_name' => 'columns',        'type' => 'dropdown',  'heading' => '열 수',           'value' => [ '2열' => '2', '3열' => '3', '4열' => '4' ] ],
+				[ 'param_name' => 'posts_per_page', 'type' => 'textfield', 'heading' => '표시 개수',        'value' => '9' ],
+				[ 'param_name' => 'orderby',        'type' => 'dropdown',  'heading' => '정렬 기준',        'value' => [ '표시 순서' => 'display_order', '공연 연도' => 'year', '등록일' => 'date' ] ],
+				[ 'param_name' => 'order',          'type' => 'dropdown',  'heading' => '정렬 방향',        'value' => [ '오름차순' => 'ASC', '내림차순' => 'DESC' ] ],
+				[ 'param_name' => 'link_to',        'type' => 'dropdown',  'heading' => '카드 링크',        'value' => [ '공연 포스트 페이지' => 'post', '공연별 커스텀 URL' => 'custom', '링크 없음' => 'none' ], 'description' => '커스텀 URL은 각 공연 편집 화면 → "카드 연결 페이지" 에서 입력' ],
+				[ 'param_name' => 'show_year',      'type' => 'dropdown',  'heading' => '연도 표시',        'value' => [ '표시' => 'yes', '숨김' => 'no' ] ],
+				[ 'param_name' => 'show_intro',     'type' => 'dropdown',  'heading' => '공연 소개 표시',   'value' => [ '표시' => 'yes', '숨김' => 'no' ] ],
+				[ 'param_name' => 'title_tag',      'type' => 'dropdown',  'heading' => '제목 태그',        'value' => [ 'H2' => 'h2', 'H3' => 'h3', 'H4' => 'h4' ] ],
 			],
 		] );
 	}

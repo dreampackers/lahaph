@@ -36,11 +36,6 @@ function lahaph_bb_load_fallback_elements(): void {
 	$elements = [
 		'musical-loop',
 		'member-grid',
-		'artist-grid',
-		'academy-courses',
-		'video-grid',
-		'notice-list',
-		'disclosure-table',
 		'inquiry-form',
 		'contact-info',
 	];
